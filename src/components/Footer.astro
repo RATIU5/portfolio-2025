@@ -1,0 +1,28 @@
+---
+import Anchor from "./common/Anchor.astro";
+import Section from "./common/Section.astro";
+
+const date = new Date();
+const year = date.getFullYear();
+---
+
+<footer class="my-4">
+  <Section class="mb-4">
+    <div class="border-b-2 border-black dark:border-white pb-4">
+      <ul>
+        <li>
+          <Anchor url="/"> home </Anchor>
+        </li>
+        <li>
+          <Anchor url="/blog">blog</Anchor>
+        </li>
+        <li>
+          <Anchor url="/projects">projects</Anchor>
+        </li>
+      </ul>
+    </div>
+  </Section>
+  <p class="text-center text-sm text-black font-medium dark:text-white">
+    &copy; {year} RATIU5. All rights reserved.
+  </p>
+</footer>

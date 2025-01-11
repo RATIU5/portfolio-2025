@@ -1,0 +1,50 @@
+---
+import Anchor from "./common/Anchor.astro";
+
+export type Props = {
+  title: string;
+  description: string;
+  url: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  tags: string[];
+};
+
+const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
+---
+
+<div class="flex flex-col gap-2 pb-8">
+  <div class="flex flex-col gap-2 sm:flex-row sm:justify-between">
+    <Anchor url={url} class="text-xl">
+      {title}
+    </Anchor>
+    <div class="flex gap-2">
+      {
+        githubUrl ? (
+          <Anchor url={githubUrl} class="text-base" external>
+            GitHub
+          </Anchor>
+        ) : null
+      }
+      {
+        liveUrl ? (
+          <Anchor url={liveUrl} class="text-base" external>
+            Live
+          </Anchor>
+        ) : null
+      }
+    </div>
+  </div>
+  <p class="text-black dark:text-white">
+    {description}
+  </p>
+  <div class="flex flex-row wrap gap-2">
+    {
+      tags.map((tag) => (
+        <span class="px-2 py-1 bg-black text-sm text-white font-semibold dark:bg-white dark:text-black">
+          {tag}
+        </span>
+      ))
+    }
+  </div>
+</div>

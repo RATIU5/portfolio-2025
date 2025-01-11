@@ -1,11 +1,120 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/common/Section.astro";
+import ArticleSnippet from "../components/ArticleSnippet.astro";
+import ProjectSnippet from "../components/ProjectSnippet.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <Fragment slot="head">
+    <title>RATIU5 • Software Engineer & Tech Entheuiast</title>
+    <meta
+      name="description"
+      content="I craft delightful web experiences and build tools that make developers' lives easier. When I'm not coding, you'll find me tinkering with creative projects and making tech more fun – with a dash of humor."
+    />
+    <meta
+      property="og:title"
+      content="RATIU5 • Software Engineer & Tech Entheuiast"
+    />
+    <meta
+      property="og:description"
+      content="Crafting delightful web experiences and building tools that make developers' lives easier."
+    />
+    <meta property="og:image" content="/profile.webp" />
+    <meta property="og:url" content="https://ratiu5.dev/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="RATIU5 • Software Engineer & Tech Entheuiast"
+    />
+    <meta
+      name="twitter:description"
+      content="Crafting delightful web experiences and building tools that make developers' lives easier."
+    />
+    <meta name="twitter:image" content="/profile.webp" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://ratiu5.dev/" />
+  </Fragment>
+  <Section class="my-16">
+    <div class="flex flex-col items-center sm:flex-row gap-8">
+      <img
+        src="/profile.webp"
+        alt="RATIU5 profile image"
+        class="rounded-full max-w-40 mb-4"
+      />
+      <div>
+        <h1
+          class="text-4xl font-display font-semibold opsz text-center sm:text-left"
+        >
+          RATIU5
+        </h1>
+        <h2 class="text-center text-2xl font-mono font-medium sm:text-left">
+          Software Engineer &<br />Grandmas Tech Support
+        </h2>
+      </div>
+    </div>
+  </Section>
+  <Section>
+    <h3 class="font-display text-xl leading-loose">Articles</h3>
+    <ul class="my-4">
+      <li>
+        <ArticleSnippet
+          title="I Don't Like Existing CMS Options, So I'm Building a New One"
+          description="There are a plethora of CMS options to choose from, and many of them are free. What's the point in creating a new one? Can't you just make any one work for my use case?"
+          url="/blog/new-cms"
+          tags={["cms"]}
+        />
+      </li>
+      <li>
+        <ArticleSnippet
+          title="Implementing Signals from Scratch"
+          description="Recently, the JavaScript community has been buzzing about signals. Their rise in popularity can be traced back to Solid.js, which drew inspiration from Knockout.js’ Observables to craft their version of signals."
+          url="/blog/signals-from-scratch"
+          tags={["javascript"]}
+        />
+      </li>
+      <li>
+        <ArticleSnippet
+          title="Beginners should use a preconfigured Neovim distribution"
+          description="I believe that beginners to Neovim should use a preconfigured distribution. I’m talking about distributions such as LunarVim, NvChad, AstroVim, or LazyVim, among others."
+          url="/blog/neovim-distros"
+          tags={["neovim"]}
+        />
+      </li>
+    </ul>
+  </Section>
+  <Section>
+    <h3 class="font-display text-xl leading-loose">Projects</h3>
+    <ul class="my-4">
+      <li>
+        <ProjectSnippet
+          title="LuxeCMS"
+          description="A modular extensible headless CMS."
+          url="/projects/luxecms"
+          githubUrl="https://github.com/luxeCMS/luxe"
+          liveUrl="https://luxecms.dev"
+          tags={["typescript"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Shadr App"
+          description="The GLSL shader creation app."
+          url="/projects/shadr"
+          githubUrl="https://github.com/RATIU5/shadr"
+          tags={["typescript"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Chewbacca"
+          description="Detect dead or 404 assets for any website."
+          url="/projects/chewbacca"
+          githubUrl="https://github.com/RATIU5/chewbacca"
+          tags={["go"]}
+        />
+      </li>
+    </ul>
+  </Section>
 </Layout>

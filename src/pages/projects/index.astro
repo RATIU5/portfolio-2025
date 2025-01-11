@@ -1,0 +1,119 @@
+---
+import Section from "../../components/common/Section.astro";
+import ProjectSnippet from "../../components/ProjectSnippet.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Projects and Code • RATIU5</title>
+    <meta
+      name="description"
+      content="A collection of my web development projects and developer tools, featuring both frontend and full-stack applications. These projects demonstrate my approach to solving real-world problems through clean code and thoughtful design."
+    />
+    <meta property="og:title" content="Projects and Code • RATIU5" />
+    <meta
+      property="og:description"
+      content="A collection of my web development projects and developer tools, featuring both frontend and full-stack applications."
+    />
+    <meta property="og:image" content="/profile.webp" />
+    <meta property="og:url" content="https://ratiu5.dev/projects" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projects and Code • RATIU5" />
+    <meta
+      name="twitter:description"
+      content="A collection of my web development projects and developer tools, featuring both frontend and full-stack applications."
+    />
+    <meta name="twitter:image" content="/profile.webp" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://ratiu5.dev/projects" />
+  </Fragment>
+  <Section class="py-8">
+    <h1 class="font-display text-2xl sm:text-3xl leading-loose">Projects</h1>
+    <ul class="my-4">
+      <li>
+        <ProjectSnippet
+          title="LuxeCMS"
+          description="A modular extensible headless CMS."
+          url="/projects/luxecms"
+          githubUrl="https://github.com/luxeCMS/luxe"
+          liveUrl="https://luxecms.dev"
+          tags={["typescript"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Shadr App"
+          description="The GLSL shader creation app."
+          url="/projects/shadr"
+          githubUrl="https://github.com/RATIU5/shadr"
+          tags={["typescript"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Chewbacca"
+          description="Detect dead or 404 assets for any website."
+          url="/projects/chewbacca"
+          githubUrl="https://github.com/RATIU5/chewbacca"
+          tags={["go"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="The Boiler"
+          description="A simple CIL tool to manage code boilerplates or templates."
+          url="/projects/boiler"
+          githubUrl="https://github.com/RATIU5/theboiler"
+          tags={["go"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Graduation App"
+          description="Streamline the graduation process with an easy to use app."
+          url="/projects/gradapp"
+          githubUrl="https://github.com/RATIU5/gradapp"
+          tags={["svelte"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="imgsrt"
+          description="A performant CLI tool to sort images into folders from metadata."
+          url="/projects/imgsrt"
+          githubUrl="https://github.com/RATIU5/imgsrt"
+          tags={["go"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Brexit"
+          description="Convert markdown into custom HTML tailored for the Canvas education platform."
+          url="/projects/brexit"
+          githubUrl="https://github.com/RATIU5/btech-brexit"
+          tags={["javascript"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Game of War"
+          description="A re-creation of the game of war card game."
+          url="/projects/game-of-war"
+          githubUrl="https://github.com/RATIU5/game_of_war_js"
+          tags={["typescript"]}
+        />
+      </li>
+      <li>
+        <ProjectSnippet
+          title="Asteroids"
+          description="A re-creation of the Asteroids game by Atari."
+          url="/projects/asteroids"
+          githubUrl="https://github.com/RATIU5/asteroids"
+          tags={["c++"]}
+        />
+      </li>
+    </ul>
+  </Section>
+</Layout>

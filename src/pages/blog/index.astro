@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArticleSnippet from "../../components/ArticleSnippet.astro";
+import Section from "../../components/common/Section.astro";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Rants, Thoughts, and Takes • RATIU5</title>
+    <meta
+      name="description"
+      content="I share my perspective on web development, tech trends, and the occasional programming mishap. From hot takes on framework wars to genuine insights about building better tools, expect unfiltered thoughts and practical wisdom."
+    />
+    <meta property="og:title" content="Rants, Thoughts, and Takes • RATIU5" />
+    <meta
+      property="og:description"
+      content="I share my perspective on web development, tech trends, and the occasional programming mishap."
+    />
+    <meta property="og:image" content="/profile.webp" />
+    <meta property="og:url" content="https://ratiu5.dev/blog" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rants, Thoughts, and Takes • RATIU5" />
+    <meta
+      name="twitter:description"
+      content="I share my perspective on web development, tech trends, and the occasional programming mishap."
+    />
+    <meta name="twitter:image" content="/profile.webp" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://ratiu5.dev/blog" />
+  </Fragment>
+  <Section class="my-8">
+    <h1 class="font-display text-2xl sm:text-3xl leading-loose">Articles</h1>
+    <ul class="my-4">
+      <li>
+        <ArticleSnippet
+          title="I Don't Like Existing CMS Options, So I'm Building a New One"
+          description="There are a plethora of CMS options to choose from, and many of them are free. What's the point in creating a new one? Can't you just make any one work for my use case?"
+          url="/blog/new-cms"
+          date="09.2023"
+          tags={["cms"]}
+        />
+      </li>
+      <li>
+        <ArticleSnippet
+          title="Implementing Signals from Scratch"
+          description="Recently, the JavaScript community has been buzzing about signals. Their rise in popularity can be traced back to Solid.js, which drew inspiration from Knockout.js’ Observables to craft their version of signals."
+          url="/blog/signals-from-scratch"
+          date="09.2023"
+          tags={["javascript"]}
+        />
+      </li>
+      <li>
+        <ArticleSnippet
+          title="Beginners should use a preconfigured Neovim distribution"
+          description="I believe that beginners to Neovim should use a preconfigured distribution. I’m talking about distributions such as LunarVim, NvChad, AstroVim, or LazyVim, among others."
+          url="/blog/neovim-distros"
+          date="12.2024"
+          tags={["neovim"]}
+        />
+      </li>
+    </ul>
+  </Section>
+</Layout>
