@@ -3,6 +3,7 @@ export type Props = {
   url: string;
   class?: string;
   external?: boolean;
+  "aria-label"?: string;
 };
 const { url, external, class: className } = Astro.props;
 ---
@@ -14,6 +15,7 @@ const { url, external, class: className } = Astro.props;
     className,
   ]}
   target={external ? "_blank" : "_self"}
+  aria-label={Astro.props["aria-label"]}
 >
   <slot />
   {
