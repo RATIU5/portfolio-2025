@@ -3,6 +3,7 @@ layout: ../../layouts/ProjectLayout.astro
 title: GradApp
 tags: ["svelte"]
 githubUrl: https://github.com/RATIU5/gradapp
+description: A simple web app designed to help instructors track students and their program they were graduating from at a local technical college.
 ---
 
 ## The Details

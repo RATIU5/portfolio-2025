@@ -3,6 +3,7 @@ layout: ../../layouts/ProjectLayout.astro
 title: Shadr
 tags: ["typescript", "pixi.js"]
 githubUrl: https://github.com/RATIU5/shadr
+description: A simple, easy to use and customizable node based GLSL shader editor.
 ---
 
 ## The Details

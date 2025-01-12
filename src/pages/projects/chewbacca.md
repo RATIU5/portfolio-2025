@@ -3,6 +3,7 @@ layout: ../../layouts/ProjectLayout.astro
 title: Chewbacca
 tags: ["go", "htmx"]
 githubUrl: https://github.com/RATIU5/chewbacca
+description: A simple web server written in Go that scrapes a website for dead or 404 assets and returns a list of them.
 ---
 
 ## The Details

@@ -35,13 +35,13 @@ const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
       }
     </div>
   </div>
-  <p class="text-black dark:text-white">
+  <p class="text-neutral-900 dark:text-neutral-100">
     {description}
   </p>
   <div class="flex flex-row wrap gap-2">
     {
       tags.map((tag) => (
-        <span class="px-2 py-1 bg-black text-sm text-white font-semibold dark:bg-white dark:text-black">
+        <span class="px-2 py-1 bg-neutral-900 text-sm text-neutral-100 font-semibold dark:bg-neutral-100 dark:text-neutral-900">
           {tag}
         </span>
       ))

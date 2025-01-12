@@ -10,12 +10,29 @@ type Props = MarkdownLayoutProps<{
   date: string;
   time: number;
   description: string;
+  url: string;
 }>;
 
 const { frontmatter } = Astro.props;
+const shortDescription = `${frontmatter.description.split(" ").slice(0, 20).join(" ")}...`;
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <title>{frontmatter.title} • RATIU5</title>
+    <meta name="description" content={frontmatter.description} />
+    <meta property="og:title" content={`${frontmatter.title} • RATIU5`} />
+    <meta property="og:description" content={shortDescription} />
+    <meta property="og:image" content="/profile.webp" />
+    <meta property="og:url" content={frontmatter.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${frontmatter.title} • RATIU5`} />
+    <meta name="twitter:description" content={shortDescription} />
+    <meta name="twitter:image" content="/profile.webp" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href={frontmatter.url} />
+  </Fragment>
   <Section>
     <div class="flex flex-col gap-4 mt-8 mb-16">
       <span class="text-xs uppercase">{frontmatter.category}</span>

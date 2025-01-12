@@ -7,15 +7,32 @@ import Anchor from "../components/common/Anchor.astro";
 
 type Props = MarkdownLayoutProps<{
   title: string;
+  description: string;
   tags?: string[];
   githubUrl?: string;
   liveUrl?: string;
 }>;
 
 const { frontmatter } = Astro.props;
+const shortDescription = `${frontmatter.description.split(" ").slice(0, 20).join(" ")}...`;
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <title>{frontmatter.title} • RATIU5</title>
+    <meta name="description" content={frontmatter.description} />
+    <meta property="og:title" content={`${frontmatter.title} • RATIU5`} />
+    <meta property="og:description" content={shortDescription} />
+    <meta property="og:image" content="/profile.webp" />
+    <meta property="og:url" content={frontmatter.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${frontmatter.title} • RATIU5`} />
+    <meta name="twitter:description" content={shortDescription} />
+    <meta name="twitter:image" content="/profile.webp" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href={frontmatter.url} />
+  </Fragment>
   <Section>
     <div class="flex flex-col gap-4 mt-8 mb-16">
       <h1 class="text-3xl sm:text-4xl leading-tight font-display">
@@ -25,7 +42,7 @@ const { frontmatter } = Astro.props;
         {
           frontmatter.tags
             ? frontmatter.tags.map((tag) => (
-                <span class="bg-black text-white dark:bg-white dark:text-black py-1 px-2">
+                <span class="bg-neutral-900 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 font-medium py-1 px-2">
                   {tag}
                 </span>
               ))

@@ -3,6 +3,7 @@ layout: ../../layouts/ProjectLayout.astro
 title: Game of War
 tags: ["typescript"]
 githubUrl: https://github.com/RATIU5/game_of_war
+description: A simple game of War written in TypeScript.
 ---
 
 ## The Details

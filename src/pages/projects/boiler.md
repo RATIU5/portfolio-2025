@@ -3,6 +3,7 @@ layout: ../../layouts/ProjectLayout.astro
 title: TheBoiler
 tags: ["go"]
 githubUrl: https://github.com/RATIU5/theboiler
+description: A simple CLI tool that stores and manages project boilerplates and templates for any coding project you're working on.
 ---
 
 ## The Details

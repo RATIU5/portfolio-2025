@@ -4,6 +4,7 @@ title: LuxeCMS
 tags: ["typescript", "cms"]
 githubUrl: https://github.com/luxeCMS/luxe
 liveUrl: https://luxecms.dev
+description: A fast, easy to use, customizable, modular, and open source CMS.
 ---
 
 ## The Details
