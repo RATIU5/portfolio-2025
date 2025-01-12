@@ -1,10 +1,12 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: Beginners should use a preconfigured Neovim distribution
-category: software
-date: Aug 23, 2023
-time: 3
 description: I believe that beginners to Neovim should use a preconfigured distribution. I'm talking about distributions such as LunarVim, NvChad, AstroVim, or LazyVim, among others.
+tags: ["neovim", "software"]
+time: 3
+featured: true
+timestamp: 2023-08-23T02:39:03+00:00
+source: neovim-distros
 ---
 
 I believe that beginners to Neovim **should** use a preconfigured distribution. I'm talking about distributions such as [LunarVim](https://www.lunarvim.org/), [NvChad](https://nvchad.com/), [AstroVim](https://astronvim.com/), or [LazyVim](https://www.lazyvim.org/), among others.

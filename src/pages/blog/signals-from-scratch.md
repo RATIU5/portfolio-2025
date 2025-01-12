@@ -1,10 +1,12 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: Implementing Signals from Scratch
-category: code
-date: Sep 28, 2023
-time: 6
 description: Recently, the JavaScript community has been buzzing about signals. Their rise in popularity can be traced back to Solid.js, which drew inspiration from Knockout.js' Observables to craft their version of signals.
+tags: ["code", "javascript", "signals"]
+time: 6
+featured: true
+timestamp: 2023-09-28T02:39:03+00:00
+source: signals-from-scratch
 ---
 
 ## What Are Signals?

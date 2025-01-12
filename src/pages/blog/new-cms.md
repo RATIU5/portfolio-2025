@@ -1,10 +1,12 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: I Don't Like Existing CMS Options, So I'm Building a New One
-category: code
-date: Dec 18, 2024
-time: 7
 description: There are a plethora of CMS options to choose from, and many of them are free. What's the point in creating a new one? Can't you just make any one work for my use case?
+tags: ["code", "cms", "typescript"]
+time: 7
+featured: true
+timestamp: 2024-12-18T02:39:03+00:00
+source: new-cms
 ---
 
 Here is a ~~complete~~ incomplete list of ~~all~~ most CMS solutions:

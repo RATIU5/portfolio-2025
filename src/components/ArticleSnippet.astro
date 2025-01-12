@@ -1,34 +1,29 @@
 ---
+import { processArticleDate } from "../lib/utils";
 import Anchor from "./common/Anchor.astro";
 
 export type Props = {
   title: string;
   description: string;
   url: string;
-  tags: string[];
-  date?: string;
+  duration?: string;
+  timestamp?: string;
 };
 
-const { title, description, url, tags, date } = Astro.props;
+const { title, description, url, duration, timestamp } = Astro.props;
 ---
 
-<div class="flex flex-col gap-2 pb-8">
+<div class="flex flex-col gap-3 pb-8">
   <Anchor url={url} class="text-xl">
     {title}
   </Anchor>
   <p class="text-neutral-900 dark:text-neutral-100">
     {description}
   </p>
-  <div class="flex justify-between items-center">
-    <div class="flex flex-row wrap gap-2">
-      {
-        tags.map((tag) => (
-          <span class="px-2 py-1 text-sm bg-neutral-900 text-neutral-100 font-semibold dark:bg-neutral-100 dark:text-neutral-900">
-            {tag}
-          </span>
-        ))
-      }
-    </div>
-    {date ? <p>{date}</p> : null}
+  <div
+    class="flex justify-between items-center text-neutral-600 dark:text-neutral-400"
+  >
+    {timestamp ? <p>{processArticleDate(timestamp)}</p> : null}
+    {duration ? <p>{duration}</p> : null}
   </div>
 </div>

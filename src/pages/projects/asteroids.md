@@ -1,9 +1,11 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
 title: Asteroids
-tags: ["c++"]
-githubUrl: https://github.com/RATIU5/asteroids
 description: A recreation of the classic game Asteroids by Atari using C++ and OpenGL.
+tags: ["c++", "opengl"]
+githubUrl: https://github.com/RATIU5/asteroids
+timestamp: 2020-01-12T02:39:03+00:00
+source: asteroids
 ---
 
 ## The Details

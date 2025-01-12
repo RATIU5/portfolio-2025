@@ -6,10 +6,12 @@ const date = new Date();
 const year = date.getFullYear();
 ---
 
-<footer class="my-4">
+<footer class="mt-16 mb-8">
   <Section class="mb-4">
-    <div class="border-b-2 border-black dark:border-white pb-4">
-      <ul>
+    <div
+      class="border-b-2 border-black dark:border-white pb-4 flex flex-col sm:flex-row sm:flex-nowrap gap-8 sm:items-center"
+    >
+      <ul class="flex flex-col gap-2">
         <li>
           <Anchor url="/">home</Anchor>
         </li>
@@ -20,6 +22,46 @@ const year = date.getFullYear();
           <Anchor url="/projects">projects</Anchor>
         </li>
       </ul>
+      <div class="flex flex-start items-start gap-4 w-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          class="w-8 h-8 min-h-8 min-w-8 max-h-8 max-w-8 -translate-y-2"
+          ><path
+            fill="currentColor"
+            d="m10 7l-2 4h3v6H5v-6l2-4zm8 0l-2 4h3v6h-6v-6l2-4z"></path></svg
+        >
+        <p id="quote"></p>
+      </div>
+      <div class="flex flex-row sm:flex-col gap-4">
+        <Anchor url="https://github.com/RATIU5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            class="fill-neutral-900 dark:fill-neutral-100"
+          >
+            <path
+              d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
+            ></path>
+          </svg>
+        </Anchor>
+        <Anchor url="https://twitter.com/RATIU51">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            class="fill-neutral-900 dark:fill-neutral-100"
+            ><path
+              d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"
+            ></path></svg
+          >
+        </Anchor>
+      </div>
     </div>
   </Section>
   <p
@@ -28,3 +70,132 @@ const year = date.getFullYear();
     &copy; {year} RATIU5. All rights reserved.
   </p>
 </footer>
+
+<script>
+  const quotes = [
+    {
+      quote:
+        "You either die a hero or you live long enough to see yourself become the villain.",
+      source: "The Dark Knight",
+    },
+    {
+      quote: "Ah, but you have heard of me.",
+      source: "Pirates of the Caribbean: The Curse of the Black Pearl",
+    },
+    {
+      quote: "I can't carry it for you, but I can carry you!",
+      source: "The Lord of the Rings: The Return of the King",
+    },
+    {
+      quote: "Your friendship is more valuable than this life, brother.",
+      source: "RRR",
+    },
+    {
+      quote: "You mustn't be afraid to dream a little bigger, darling.",
+      source: "Inception",
+    },
+    {
+      quote:
+        "We used to look up at the sky and wonder at our place in the stars. Now we just look down, and worry about our place in the dirt.",
+      source: "Interstellar",
+    },
+    {
+      quote:
+        "Once you do something, you never forget. Even if you can't remember.",
+      source: "Spirited Away",
+    },
+    {
+      quote:
+        "The Hand of God be my witness, I am the Voice from the Outer World! I will lead you to PARADISE!",
+      source: "Dune: Part Two",
+    },
+    {
+      quote:
+        "Everyone keeps telling me how my story is supposed to go. Nah. I'm-a do my own thing.",
+      source: "Spider-Man: Across the Spider-Verse",
+    },
+    {
+      quote:
+        "That person who helps others simply because it should or must be done, and because it is the right thing to do, is indeed without a doubt, a real superhero.",
+      source: "Spider-Man: Into the Spider-Verse",
+    },
+    {
+      quote:
+        "But you can't tell me what it feels like to wake up next to a woman and feel truly happy.",
+      source: "Good Will Hunting",
+    },
+    {
+      quote: "What we know is a drop. What we don’t know is an ocean.",
+      source: "Dark",
+    },
+    {
+      quote:
+        "It’s not enough to give people what they need to survive. You have to give them what they need to live.",
+      source: "Arcane",
+    },
+    {
+      quote:
+        "It is important to draw wisdom from different places. If you take it from one place it becomes rigid and stale.",
+      source: "Avatar: The Last Airbender",
+    },
+    {
+      quote: "...the rest is confetti.",
+      source: "The Haunting of Hill House",
+    },
+    {
+      quote:
+        "We see that the doughnut hole has a hole in its center - it is not a doughnut hole at all but a smaller doughnut with its own hole, and our doughnut is not whole at all!",
+      source: "Knives Out",
+    },
+    {
+      quote:
+        "So, even though you have broken my heart yet again, I wanted to say, in another life, I would have really liked just doing laundry and taxes with you.",
+      source: "Everything Everywhere All at Once",
+    },
+    {
+      quote:
+        "If I like a moment, for me, personally, I don't like to have the distraction of the camera. I just want to stay in it.",
+      source: "The Secret Life of Walter Mitty",
+    },
+    {
+      quote:
+        "I don't want to come off as arrogant here, but I'm the greatest botanist on this planet.",
+      source: "The Martian",
+    },
+    {
+      quote: "I hoped today might be a good day. Hope is a dangerous thing.",
+      source: "1917",
+    },
+    {
+      quote:
+        "Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present.",
+      source: "Kung Fu Panda",
+    },
+    {
+      quote:
+        "I have no interest in money or power. I have no interest in being happy; only satisfied.",
+      source: "Blue Eye Samurai",
+    },
+    {
+      quote: "Hurry on home now, you're going to be late for piano practice.",
+      source: "Pluto",
+    },
+    {
+      quote: "A true selfless act always sparks another.",
+      source: "Klaus",
+    },
+    {
+      quote:
+        "My parents haven't figured me out yet. To be fair, it took a while to figure myself out.",
+      source: "The Mitchells vs. The Machines",
+    },
+    {
+      quote: "You will eat less than you desire and more than you deserve.",
+      source: "The Menu",
+    },
+  ];
+  const quoteElement = document.getElementById("quote");
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const randomQuote = quotes[randomIndex];
+  quoteElement!.textContent = randomQuote.quote;
+</script>

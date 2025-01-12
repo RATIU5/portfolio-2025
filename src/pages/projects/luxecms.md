@@ -1,10 +1,13 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
 title: LuxeCMS
+description: A fast, easy to use, customizable, modular, and open source CMS.
 tags: ["typescript", "cms"]
 githubUrl: https://github.com/luxeCMS/luxe
 liveUrl: https://luxecms.dev
-description: A fast, easy to use, customizable, modular, and open source CMS.
+featured: true
+timestamp: 2024-10-24T02:39:03+00:00
+source: luxecms
 ---
 
 ## The Details

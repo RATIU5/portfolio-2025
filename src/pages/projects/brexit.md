@@ -1,9 +1,11 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
 title: Brexit
+description: A tool that converts Markdown content into beautiful stylized HTML that is compatible with the Canvas learning platform.
 tags: ["javascript"]
 githubUrl: https://github.com/RATIU5/btech-brexit
-description: A tool that converts Markdown content into beautiful stylized HTML that is compatible with the Canvas learning platform.
+timestamp: 2022-02-06T02:39:03+00:00
+source: brexit
 ---
 
 ## The Details

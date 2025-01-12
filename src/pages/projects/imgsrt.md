@@ -1,9 +1,11 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
 title: imgsrt
+description: A simple CLI tool that sorts images by their creation date.
 tags: ["go"]
 githubUrl: https://github.com/RATIU5/imgsrt
-description: A simple CLI tool that sorts images by their creation date.
+timestamp: 2022-05-20T02:39:03+00:00
+source: imgsrt
 ---
 
 ## The Details
