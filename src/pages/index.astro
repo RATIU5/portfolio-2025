@@ -116,28 +116,6 @@ const featuredArticles = (
   </Section>
   <Section>
     <div class="flex justify-between items-center w-full">
-      <h3 class="font-display text-lg sm:text-xl leading-loose">Articles</h3>
-      <Anchor url="/blog" class="text-base">View All</Anchor>
-    </div>
-    <ul class="my-8">
-      {
-        (featuredArticles.length === 0 && <p>No featured articles yet.</p>) ||
-          featuredArticles.map((article) => (
-            <li>
-              <ArticleSnippet
-                title={article.title}
-                description={article.description}
-                url={article.source}
-                timestamp={article.timestamp}
-                duration={`${article.time} min`}
-              />
-            </li>
-          ))
-      }
-    </ul>
-  </Section>
-  <Section>
-    <div class="flex justify-between items-center w-full">
       <h3 class="font-display text-lg sm:text-xl leading-loose">Projects</h3>
       <Anchor url="/projects" class="text-base">View All</Anchor>
     </div>
@@ -153,6 +131,28 @@ const featuredArticles = (
                 githubUrl={project.githubUrl}
                 liveUrl={project.liveUrl}
                 tags={project.tags ?? []}
+              />
+            </li>
+          ))
+      }
+    </ul>
+  </Section>
+  <Section>
+    <div class="flex justify-between items-center w-full">
+      <h3 class="font-display text-lg sm:text-xl leading-loose">Articles</h3>
+      <Anchor url="/blog" class="text-base">View All</Anchor>
+    </div>
+    <ul class="my-8">
+      {
+        (featuredArticles.length === 0 && <p>No featured articles yet.</p>) ||
+          featuredArticles.map((article) => (
+            <li>
+              <ArticleSnippet
+                title={article.title}
+                description={article.description}
+                url={article.source}
+                timestamp={article.timestamp}
+                duration={`${article.time} min`}
               />
             </li>
           ))
