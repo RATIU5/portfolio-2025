@@ -6,15 +6,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "croct --no-interaction install"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
+    "@croct/content": "^1.1.0",
+    "@croct/plug": "^0.18.1",
     "@tailwindcss/typography": "^0.5.16",
     "astro": "^5.1.5",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.5",
+    "croct": "^0.9.1"
   }
 }
