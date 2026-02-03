@@ -1,0 +1,26 @@
+---
+/**
+ * Section wrapper component that provides consistent HTML semantics
+ * and allows passing through all standard section attributes
+ *
+ * @example
+ * <Section class="bg-white dark:bg-neutral-900">
+ *   <slot />
+ * </Section>
+ */
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"section"> {
+  /** Additional CSS classes */
+  class?: string;
+}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<section
+  class:list={{ "w-full": true, [className!]: Boolean(className) }}
+  {...rest}
+>
+  <slot />
+</section>

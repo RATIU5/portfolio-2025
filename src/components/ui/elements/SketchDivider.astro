@@ -1,0 +1,79 @@
+---
+interface Props {
+  strokeColor?: string;
+  roughness?: number;
+  strokeWidth?: number;
+  height?: number;
+  seed?: number;
+  class?: string;
+}
+
+const {
+  strokeColor = "#2c2c2c",
+  roughness = 2,
+  strokeWidth = 2,
+  height = 8,
+  seed = 12345,
+  class: className = "",
+} = Astro.props;
+---
+
+<sketch-divider
+  class:list={["block w-full", className]}
+  style={`height: ${height}px`}
+  data-stroke={strokeColor}
+  data-roughness={roughness}
+  data-stroke-width={strokeWidth}
+  data-height={height}
+  data-seed={seed}
+>
+  <svg class="w-full h-full" preserveAspectRatio="none" aria-hidden="true" />
+</sketch-divider>
+
+<script>
+  import rough from "roughjs";
+
+  function drawDivider(el: Element) {
+    const svg = el.querySelector("svg") as SVGSVGElement;
+    if (!svg) return;
+
+    const width = (el as HTMLElement).offsetWidth;
+    if (width === 0) return;
+
+    const height = parseInt(el.getAttribute("data-height") || "8");
+    const stroke = el.getAttribute("data-stroke") || "#2c2c2c";
+    const roughness = parseFloat(el.getAttribute("data-roughness") || "2");
+    const strokeWidth = parseFloat(el.getAttribute("data-stroke-width") || "2");
+    const seed = parseInt(el.getAttribute("data-seed") || "12345");
+
+    svg.innerHTML = "";
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+    const rc = rough.svg(svg);
+    const y = height / 2;
+
+    const line = rc.line(0, y, width, y, {
+      stroke,
+      roughness,
+      strokeWidth,
+      seed,
+      bowing: 0.5,
+    });
+    svg.appendChild(line);
+  }
+
+  function initAll() {
+    const dividers = document.querySelectorAll("sketch-divider");
+    const ro = new ResizeObserver((entries) => {
+      entries.forEach((e) => drawDivider(e.target));
+    });
+
+    dividers.forEach((el) => {
+      drawDivider(el);
+      ro.observe(el);
+    });
+  }
+
+  initAll();
+  document.addEventListener("astro:page-load", initAll);
+</script>

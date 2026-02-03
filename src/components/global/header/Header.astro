@@ -1,0 +1,183 @@
+---
+import ResponsiveHeader from "@components/global/header/ResponsiveHeader.astro";
+import SketchDivider from "@components/ui/elements/SketchDivider.astro";
+import Button from "@ui/elements/Button.astro";
+
+export type Props = {
+	class?: string;
+};
+
+const { class: className } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<ResponsiveHeader
+	class="sticky top-0 z-mobile-menu bg-neutral-50"
+	class:list={{
+    [className!]: Boolean(className),
+  }}
+	breakpoint={768}
+	closeOnNavClick={true}
+	openClass="opacity-100 pointer-events-auto"
+	closedClass="opacity-0 pointer-events-none"
+>
+	<nav class="relative hidden md:block px-space py-8">
+		<div class="w-full flex flex-col md:justify-center gap-4">
+			<div class="flex items-center justify-center gap-6">
+				<Button
+					type="link"
+					size="large"
+					href="/"
+					aria-current={currentPath === "/" ? "page" : undefined}
+				>
+					home
+				</Button>
+				<Button
+					type="link"
+					size="large"
+					href="/blog"
+					aria-current={currentPath === "/blog" ? "page" : undefined}
+				>
+					blog
+				</Button>
+				<Button
+					type="link"
+					size="large"
+					href="/about"
+					aria-current={currentPath === "/about" ? "page" : undefined}
+				>
+					about
+				</Button>
+			</div>
+			<SketchDivider roughness={5} />
+		</div>
+	</nav>
+
+	<div class="mobile-header px-space py-3 md:hidden">
+		<div class="flex items-center justify-end">
+			<div class="flex items-center gap-3">
+				<button
+					type="button"
+					data-trigger
+					aria-label="Toggle menu"
+					class="p-2 -mr-2 text-neutral-900"
+				>
+					<svg
+						class="sketch-icon-svg"
+						width="32"
+						height="32"
+						viewBox="0 0 32 32"
+						aria-hidden="true"
+						data-initialized="true"
+					>
+						<g>
+							<path
+								d="M2.526895433664322 7.769478410482407 C5.400246489048005 6.3919931567907335, 17.568427866697313 3.719520202994347, 28.810686975717545 0.6710048615932465 M4.668873593211174 3.197217896580696 C13.350490227341652 5.295840908527374, 19.675463184714317 1.9506122364997864, 29.251426979899406 3.6317467242479324"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+							></path>
+						</g>
+						<g>
+							<path
+								d="M0.24142232909798622 17.69724788889289 C8.760846735537053 16.545153149947524, 12.44839629456401 16.08600772319734, 31.223497662693262 17.45567586645484 M5.371542466804385 17.726415114477277 C12.741840717568994 17.005072749435904, 22.873138647899033 16.52049884873629, 26.090678406879306 15.13737847097218"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+							></path>
+						</g>
+						<g>
+							<path
+								d="M5.9559492245316505 27.62501736730337 C12.1214469820261 26.986313143104315, 15.328364722430706 28.740495243400336, 25.63630834966898 26.240346871316433 M2.0742113403975964 28.255612332373857 C12.133191207796337 28.71430459034443, 22.07081411108375 27.090385460972787, 26.929929833859205 26.64301021769643"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+							></path>
+						</g>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<SketchDivider roughness={5} class="in-data-[menu-state='open']:hidden" />
+	</div>
+
+	<div
+		data-backdrop
+		class="md:hidden fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-mobile-backdrop opacity-0 pointer-events-none"
+	></div>
+
+	<div
+		data-menu
+		class="md:hidden fixed inset-0 z-mobile-menu bg-neutral-50 flex flex-col opacity-0 pointer-events-none"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Mobile navigation"
+	>
+		<div class="px-space py-3">
+			<div class="flex items-center justify-end">
+				<button
+					type="button"
+					data-close
+					aria-label="Close menu"
+					class="p-2 -mr-2 text-neutral-900"
+				>
+					<svg
+						width="32"
+						height="32"
+						viewBox="0 0 32 32"
+						aria-hidden="true"
+						data-initialized="true"
+					>
+						<g>
+							<path
+								d="M5.053790867328644 7.538956820964813 C5.875183393716814 9.655774499177934, 17.41154614901543 17.326616777181627, 25.62137395143509 25.342009723186493 M3.337747186422348 4.394435793161392 C11.162762935638428 12.026490578174592, 18.21270885038376 16.626841995239257, 28.502853959798813 29.263493448495865"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+							></path>
+						</g>
+						<g>
+							<path
+								d="M26.768317762762308 5.466726299375296 C23.22848082603514 7.957512302502991, 16.252419603332875 17.841790001645684, 4.034184638410807 30.126680728048086 M28.04041606001556 2.923633011057973 C18.77073198610544 12.20877833122015, 14.020494542807338 20.18222992399335, 5.342105386778712 28.769125195220113"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+							></path>
+						</g>
+					</svg>
+				</button>
+			</div>
+			<SketchDivider
+				roughness={5}
+				class="hidden in-data-[menu-state='open']:block"
+			/>
+		</div>
+		<nav class="flex-1 flex flex-col gap-2 px-space py-6 overflow-y-auto">
+			<Button
+				type="link"
+				size="large"
+				href="/"
+				aria-current={currentPath === "/" ? "page" : undefined}
+			>
+				home
+			</Button>
+			<Button
+				type="link"
+				size="large"
+				href="/blog"
+				aria-current={currentPath === "/blog" ? "page" : undefined}
+			>
+				blog
+			</Button>
+			<Button
+				type="link"
+				size="large"
+				href="/about"
+				aria-current={currentPath === "/about" ? "page" : undefined}
+			>
+				about
+			</Button>
+		</nav>
+	</div>
+</ResponsiveHeader>

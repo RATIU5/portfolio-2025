@@ -1,0 +1,297 @@
+---
+export type Props = {
+  breakpoint?: number;
+  closeOnEscape?: boolean;
+  closeOnResize?: boolean;
+  closeOnNavClick?: boolean;
+  closeOnBackdropClick?: boolean;
+  trapFocus?: boolean;
+  lockScroll?: boolean;
+  openClass?: string;
+  closedClass?: string;
+  stateTargets?: string;
+  class?: string;
+  initialState?: "open" | "closed";
+};
+
+const {
+  breakpoint = 768,
+  closeOnEscape = true,
+  closeOnResize = true,
+  closeOnNavClick = true,
+  closeOnBackdropClick = true,
+  trapFocus = true,
+  lockScroll = true,
+  openClass,
+  closedClass,
+  stateTargets = "[data-menu], [data-backdrop]",
+  class: className = "",
+  initialState = "closed",
+} = Astro.props;
+---
+
+<responsive-header
+  class:list={{
+    block: true,
+    [className!]: Boolean(className),
+  }}
+  data-menu-state={initialState}
+  data-breakpoint={breakpoint}
+  data-close-on-escape={closeOnEscape}
+  data-close-on-resize={closeOnResize}
+  data-close-on-nav-click={closeOnNavClick}
+  data-close-on-backdrop-click={closeOnBackdropClick}
+  data-trap-focus={trapFocus}
+  data-lock-scroll={lockScroll}
+  data-open-class={openClass || ""}
+  data-closed-class={closedClass || ""}
+  data-state-targets={stateTargets}
+>
+  <slot />
+</responsive-header>
+
+<style>
+  [data-menu],
+  [data-backdrop] {
+    will-change: opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-menu],
+    [data-backdrop] {
+      transition-duration: 0ms;
+    }
+  }
+</style>
+
+<script>
+  interface ResponsiveHeaderConfig {
+    breakpoint: number;
+    closeOnEscape: boolean;
+    closeOnResize: boolean;
+    closeOnNavClick: boolean;
+    closeOnBackdropClick: boolean;
+    trapFocus: boolean;
+    lockScroll: boolean;
+    openClass: string;
+    closedClass: string;
+    stateTargets: string;
+  }
+
+  interface ToggleEventDetail {
+    state: "open" | "closed";
+    trigger: "user" | "resize" | "escape" | "backdrop" | "nav-link";
+  }
+
+  class ResponsiveHeaderElement extends HTMLElement {
+    private config: ResponsiveHeaderConfig;
+    private mediaQuery: MediaQueryList;
+    private lastFocusedElement: HTMLElement | null = null;
+
+    constructor() {
+      super();
+
+      this.config = {
+        breakpoint: parseInt(this.dataset.breakpoint || "768", 10),
+        closeOnEscape: this.dataset.closeOnEscape !== "false",
+        closeOnResize: this.dataset.closeOnResize !== "false",
+        closeOnNavClick: this.dataset.closeOnNavClick !== "false",
+        closeOnBackdropClick: this.dataset.closeOnBackdropClick !== "false",
+        trapFocus: this.dataset.trapFocus !== "false",
+        lockScroll: this.dataset.lockScroll !== "false",
+        openClass: this.dataset.openClass || "",
+        closedClass: this.dataset.closedClass || "",
+        stateTargets:
+          this.dataset.stateTargets || "[data-menu], [data-backdrop]",
+      };
+
+      this.mediaQuery = window.matchMedia(
+        `(min-width: ${this.config.breakpoint}px)`,
+      );
+    }
+
+    connectedCallback() {
+      this.addEventListener("click", this.handleClick);
+
+      if (this.config.closeOnEscape) {
+        document.addEventListener("keydown", this.handleKeyDown);
+      }
+
+      if (this.config.closeOnResize) {
+        this.mediaQuery.addEventListener("change", this.handleResize);
+      }
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener("click", this.handleClick);
+      document.removeEventListener("keydown", this.handleKeyDown);
+      this.mediaQuery.removeEventListener("change", this.handleResize);
+    }
+
+    private handleClick = (e: Event) => {
+      const target = e.target as HTMLElement;
+
+      if (target.closest("[data-trigger]")) {
+        this.toggleMenu("user");
+      } else if (target.closest("[data-close]")) {
+        this.closeMenu("user");
+      } else if (
+        this.config.closeOnBackdropClick &&
+        target.closest("[data-backdrop]")
+      ) {
+        this.closeMenu("backdrop");
+      } else if (
+        this.config.closeOnNavClick &&
+        target.closest("[data-nav-link]")
+      ) {
+        this.closeMenu("nav-link");
+      }
+    };
+
+    private getState(): "open" | "closed" {
+      return (this.dataset.menuState as "open" | "closed") || "closed";
+    }
+
+    private setState(
+      state: "open" | "closed",
+      trigger: ToggleEventDetail["trigger"],
+    ) {
+      this.dataset.menuState = state;
+
+      const triggers = this.querySelectorAll("[data-trigger]");
+      for (const trigger of triggers) {
+        trigger.setAttribute("aria-expanded", String(state === "open"));
+      }
+
+      if (this.config.openClass || this.config.closedClass) {
+        const targets = this.querySelectorAll(this.config.stateTargets);
+
+        for (const el of targets) {
+          if (state === "open") {
+            if (this.config.closedClass) {
+              el.classList.remove(...this.config.closedClass.split(" "));
+            }
+            if (this.config.openClass) {
+              el.classList.add(...this.config.openClass.split(" "));
+            }
+          } else {
+            if (this.config.openClass) {
+              el.classList.remove(...this.config.openClass.split(" "));
+            }
+            if (this.config.closedClass) {
+              el.classList.add(...this.config.closedClass.split(" "));
+            }
+          }
+        }
+      }
+
+      if (this.config.lockScroll) {
+        document.body.style.overflow = state === "open" ? "hidden" : "";
+      }
+
+      this.dispatchEvent(
+        new CustomEvent(`responsive-header:${state}`, {
+          detail: { state, trigger },
+          bubbles: true,
+        }),
+      );
+      this.dispatchEvent(
+        new CustomEvent("responsive-header:toggle", {
+          detail: { state, trigger },
+          bubbles: true,
+        }),
+      );
+    }
+
+    toggleMenu(trigger: ToggleEventDetail["trigger"] = "user") {
+      const currentState = this.getState();
+      const newState = currentState === "open" ? "closed" : "open";
+
+      if (newState === "open") {
+        this.openMenu(trigger);
+      } else {
+        this.closeMenu(trigger);
+      }
+    }
+
+    openMenu(trigger: ToggleEventDetail["trigger"] = "user") {
+      if (this.getState() === "open") return;
+
+      this.lastFocusedElement = document.activeElement as HTMLElement;
+      this.setState("open", trigger);
+
+      if (this.config.trapFocus) {
+        requestAnimationFrame(() => {
+          const firstFocusable = this.querySelector<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          );
+          firstFocusable?.focus();
+        });
+      }
+    }
+
+    closeMenu(trigger: ToggleEventDetail["trigger"] = "user") {
+      if (this.getState() === "closed") return;
+
+      this.setState("closed", trigger);
+
+      if (this.config.trapFocus && this.lastFocusedElement) {
+        requestAnimationFrame(() => {
+          this.lastFocusedElement?.focus();
+        });
+      }
+    }
+
+    private handleKeyDown = (e: KeyboardEvent) => {
+      if (this.getState() !== "open") return;
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        this.closeMenu("escape");
+        return;
+      }
+
+      if (this.config.trapFocus && e.key === "Tab") {
+        this.handleTabKey(e);
+      }
+    };
+
+    private handleTabKey(e: KeyboardEvent) {
+      const focusableSelectors = [
+        "a[href]",
+        "button:not([disabled])",
+        "input:not([disabled])",
+        "select:not([disabled])",
+        "textarea:not([disabled])",
+        '[tabindex]:not([tabindex="-1"])',
+      ].join(",");
+
+      const focusable = Array.from(
+        this.querySelectorAll<HTMLElement>(focusableSelectors),
+      ).filter((el) => el.offsetParent !== null);
+
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    private handleResize = (e: MediaQueryListEvent) => {
+      if (e.matches && this.getState() === "open") {
+        this.closeMenu("resize");
+      }
+    };
+  }
+
+  if (!customElements.get("responsive-header")) {
+    customElements.define("responsive-header", ResponsiveHeaderElement);
+  }
+</script>

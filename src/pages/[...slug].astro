@@ -1,0 +1,31 @@
+---
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
+import Page from '../layouts/Page.astro';
+
+let { slug } = Astro.params;
+
+if (!slug) {
+  slug = 'index';
+}
+
+const data = await runSDK(SDKCoreJs.GET.page.bySlug(slug))
+
+if (!data) {
+  return new Response(null, { status: 404 });
+}
+
+const { title, description, heroImage, tags } = data;
+---
+
+<Page title={title} description={description} heroImage={heroImage}>
+  <Fragment slot="head">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {heroImage && <meta property="og:image" content={heroImage} />}
+  </Fragment>
+  <main>
+    <StudioCMSRenderer data={data} />
+  </main>
+</Layout>

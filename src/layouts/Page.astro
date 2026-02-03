@@ -1,0 +1,14 @@
+---
+import Footer from "@components/global/Footer.astro";
+import Header from "@components/global/header/Header.astro";
+import Base from "@layouts/Base.astro";
+---
+
+<Base class="flex flex-col">
+	<slot slot="head" name="head" />
+	<Header class="shrink-0" />
+	<main class="flex-1 px-space">
+		<slot />
+	</main>
+	<Footer class="shrink-0" />
+</Base>

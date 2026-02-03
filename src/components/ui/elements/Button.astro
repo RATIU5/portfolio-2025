@@ -1,0 +1,293 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+const CONFIG = {
+	defaults: {
+		roughness: 2,
+		strokeColor: "#2c2c2c",
+		fillColor: "#ffffff",
+	},
+	button: {
+		small: {
+			text: "text-sm",
+			padding: "px-3 py-1.5",
+			depthOffset: 4,
+			lineSpacing: 4,
+		},
+		medium: {
+			text: "text-base",
+			padding: "px-4 py-2",
+			depthOffset: 6,
+			lineSpacing: 5,
+		},
+		large: {
+			text: "text-lg",
+			padding: "px-6 py-3",
+			depthOffset: 8,
+			lineSpacing: 6,
+		},
+	},
+	link: {
+		small: { text: "text-lg", underlineGap: -2, underlineHeight: 5 },
+		medium: { text: "text-xl", underlineGap: -1, underlineHeight: 7 },
+		large: { text: "text-2xl", underlineGap: 0, underlineHeight: 9 },
+	},
+	sketch: {
+		button: { strokeWidth: 2.5, bowing: 1.5, fillStyle: "solid" as const },
+		link: { strokeWidth: 2, bowing: 0.5 },
+		depth: { strokeWidth: 1.5, roughness: 1.2 },
+	},
+};
+
+interface ButtonBase
+	extends Omit<HTMLAttributes<"a" | "button">, "class" | "type" | "href"> {
+	type: "button" | "submit" | "reset" | "link";
+	size?: "small" | "medium" | "large";
+	disabled?: boolean;
+	class?: string;
+	roughness?: number;
+	strokeColor?: string;
+}
+
+interface ButtonProps extends ButtonBase {
+	type: "button" | "submit" | "reset";
+	depthOffset?: number;
+	lineSpacing?: number;
+	fillColor?: string;
+	form?: string;
+}
+
+interface LinkProps extends ButtonBase {
+	type: "link";
+	href: string;
+	target?: "_blank" | "_self" | "_parent" | "_top";
+	rel?: string;
+	underlineGap?: number;
+}
+
+type Props = ButtonProps | LinkProps;
+
+const {
+	size = "medium",
+	disabled = false,
+	class: className = "",
+	type,
+	roughness = CONFIG.defaults.roughness,
+	strokeColor = CONFIG.defaults.strokeColor,
+	...rest
+} = Astro.props;
+
+const isLink = type === "link";
+
+if (isLink && !("href" in rest)) {
+	throw new Error("Button: 'href' required when type is 'link'");
+}
+
+const buttonConfig = CONFIG.button[size];
+const linkConfig = CONFIG.link[size];
+
+const depthOffset = isLink
+	? 0
+	: ((rest as ButtonProps).depthOffset ?? buttonConfig.depthOffset);
+const lineSpacing = isLink
+	? 0
+	: ((rest as ButtonProps).lineSpacing ?? buttonConfig.lineSpacing);
+const fillColor = isLink
+	? "transparent"
+	: ((rest as ButtonProps).fillColor ?? CONFIG.defaults.fillColor);
+const underlineGap = isLink
+	? ((rest as LinkProps).underlineGap ?? linkConfig.underlineGap)
+	: 0;
+
+const dataAttrs = {
+	"data-sketch-type": type,
+	"data-size": size,
+	"data-roughness": roughness,
+	"data-depth-offset": depthOffset,
+	"data-line-spacing": lineSpacing,
+	"data-stroke": strokeColor,
+	"data-fill": fillColor,
+	...(isLink && { "data-underline-gap": underlineGap }),
+};
+
+const buttonClasses = [
+	"sketch-button",
+	"relative inline-block cursor-pointer bg-transparent border-none",
+	"hover:translate-y-[3px] active:translate-y-[4px] transition-transform",
+	buttonConfig.padding,
+	disabled && "opacity-50 cursor-not-allowed pointer-events-none",
+	className,
+];
+
+const linkClasses = [
+	"sketch-link",
+	"relative inline-block cursor-pointer",
+	disabled && "opacity-50 cursor-not-allowed pointer-events-none",
+	className,
+];
+
+const buttonTextClasses = [
+	"relative z-10 font-bold tracking-wide pointer-events-none font-mono",
+	buttonConfig.text,
+];
+
+const linkTextClasses = [
+	"relative font-bold tracking-wider font-sans",
+	linkConfig.text,
+];
+---
+
+{isLink ? (
+    <a
+      class:list={linkClasses}
+      rel={(rest as LinkProps).target === "_blank" ? "noopener noreferrer" : (rest as LinkProps).rel}
+      aria-disabled={disabled}
+      tabindex={disabled ? -1 : undefined}
+      {...dataAttrs}
+      {...rest}
+    >
+      <span class:list={linkTextClasses} style={`color: ${strokeColor}`}>
+        <slot />
+      </span>
+      <svg
+        class="sketch-svg block absolute left-0 w-full"
+        style={`bottom: ${underlineGap}px`}
+        height={linkConfig.underlineHeight}
+        aria-hidden="true"
+      />
+    </a>
+  ) : (
+    <button
+      class:list={buttonClasses}
+      type={type}
+      disabled={disabled}
+      form={(rest as ButtonProps).form}
+      {...dataAttrs}
+    >
+      <svg
+        class="sketch-svg absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+      />
+      <span class:list={buttonTextClasses} style={`color: ${strokeColor}`}>
+        <slot />
+      </span>
+    </button>
+  )}
+
+<script>
+import rough from "roughjs";
+
+const SKETCH_CONFIG = {
+	button: { strokeWidth: 2.5, bowing: 1.5, fillStyle: "solid" as const },
+	link: { strokeWidth: 2, bowing: 0.5 },
+	depth: { strokeWidth: 1.5, roughness: 1.2 },
+};
+
+function initSketchElement(el: Element) {
+	const svg = el.querySelector(".sketch-svg") as SVGSVGElement;
+	if (!svg || svg.dataset.initialized) return;
+
+	const sketchType = el.getAttribute("data-sketch-type");
+	const roughness = parseFloat(el.getAttribute("data-roughness") || "1.5");
+	const stroke = el.getAttribute("data-stroke") || "#2c2c2c";
+
+	const rc = rough.svg(svg);
+
+	if (sketchType === "link") {
+		const textEl = el.querySelector("span");
+		const textWidth = textEl?.offsetWidth || 100;
+		const gap = parseInt(el.getAttribute("data-underline-gap") || "2", 10);
+
+		svg.setAttribute("width", String(textWidth));
+
+		const line = rc.line(0, gap + 2, textWidth, gap + 2, {
+			stroke,
+			roughness,
+			...SKETCH_CONFIG.link,
+			seed: 12345,
+		});
+		svg.appendChild(line);
+	} else {
+		const rect = el.getBoundingClientRect();
+		const depthOffset = parseInt(
+			el.getAttribute("data-depth-offset") || "6",
+			10
+		);
+		const lineSpacing = parseInt(
+			el.getAttribute("data-line-spacing") || "5",
+			10
+		);
+		const fill = el.getAttribute("data-fill") || "#ffffff";
+
+		const padding = 4;
+		const width = rect.width;
+		const height = rect.height;
+		const svgWidth = width + depthOffset;
+		const svgHeight = height + depthOffset;
+
+		svg.setAttribute("width", String(svgWidth));
+		svg.setAttribute("height", String(svgHeight));
+		svg.style.left = `-${padding}px`;
+		svg.style.top = `-${padding}px`;
+		svg.style.width = `${svgWidth}px`;
+		svg.style.height = `${svgHeight}px`;
+
+		const depthGroup = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"g"
+		);
+		depthGroup.classList.add("depth-lines");
+
+		const numLines = Math.floor(width / lineSpacing);
+		for (let i = 0; i < numLines; i++) {
+			const x = padding + i * lineSpacing;
+			const line = rc.line(
+				x,
+				padding + height - padding * 2,
+				x + depthOffset,
+				padding + height - padding * 2 + depthOffset,
+				{ stroke, ...SKETCH_CONFIG.depth, seed: 1000 + i }
+			);
+			depthGroup.appendChild(line);
+		}
+		svg.appendChild(depthGroup);
+
+		const rectShape = rc.rectangle(
+			padding,
+			padding,
+			width - padding * 2,
+			height - padding * 2,
+			{
+				roughness,
+				stroke,
+				fill,
+				...SKETCH_CONFIG.button,
+				seed: 12345,
+			}
+		);
+		svg.appendChild(rectShape);
+	}
+
+	svg.dataset.initialized = "true";
+}
+
+function initAll() {
+	document
+		.querySelectorAll(".sketch-button, .sketch-link")
+		.forEach(initSketchElement);
+}
+
+initAll();
+document.addEventListener("astro:page-load", initAll);
+</script>
+
+<style>
+.sketch-button:hover .depth-lines,
+.sketch-button:active .depth-lines {
+	display: none;
+}
+
+.sketch-link:hover .sketch-svg {
+	transform: translateY(2px);
+}
+</style>

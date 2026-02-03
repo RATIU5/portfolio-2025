@@ -1,0 +1,490 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	/*
+    Define custom font variables within the `astro.config.mjs` file, as well as the `src/layouts/Base.astro` file.
+  */
+	--font-sans: var(--gyg), "Helvetica Neue", Arial, sans-serif;
+	--font-serif: var(--ftg), Georgia, serif;
+	--font-mono: var(--cm), "Courier New", Courier, monospace;
+
+	/*
+    Define custom breakpoints and container sizes
+  */
+	--breakpoint-xs: 480px;
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1440px;
+	--breakpoint-3xl: 1536px;
+
+	--container-xs: 480px;
+	--container-sm: 640px;
+	--container-md: 768px;
+	--container-lg: 1024px;
+	--container-xl: 1280px;
+	--container-2xl: 1440px;
+	--container-3xl: 1536px;
+
+	/*
+    Define additional text sizes
+  */
+	--text-8xl: 6rem;
+	--text-9xl: 8rem;
+	--text-10xl: 10rem;
+
+	/*
+    Define custom color variables. Remove all existing colors first to avoid conflicts,
+    then define the new color palette using the Oklch color model.
+    Resources: https://www.tints.dev/; https://huemint.com/
+  */
+
+	--color-*: initial;
+
+	--color-white: #f4f4f4;
+	--color-black: oklch(0.187 0.007 17.81);
+
+	--color-neutral-50: oklch(0.966 0.002 18.01);
+	--color-neutral-100: oklch(0.925 0.005 34.58);
+	--color-neutral-200: oklch(0.846 0.01 32.63);
+	--color-neutral-300: oklch(0.769 0.018 35.39);
+	--color-neutral-400: oklch(0.683 0.025 34.34);
+	--color-neutral-500: oklch(0.605 0.023 32.61);
+	--color-neutral-600: oklch(0.527 0.02 35.37);
+	--color-neutral-700: oklch(0.449 0.017 34.34);
+	--color-neutral-800: oklch(0.364 0.014 39.35);
+	--color-neutral-900: oklch(0.284 0.011 27.48);
+	--color-neutral-950: oklch(0.25 0.009 29.05);
+
+	--color-primary-50: oklch(0.964 0.015 251.15);
+	--color-primary-100: oklch(0.922 0.034 246.79);
+	--color-primary-200: oklch(0.843 0.071 244.83);
+	--color-primary-300: oklch(0.763 0.114 241.11);
+	--color-primary-400: oklch(0.693 0.123 238.98);
+	--color-primary-500: oklch(0.616 0.11 239.5);
+	--color-primary-600: oklch(0.541 0.096 238.55);
+	--color-primary-700: oklch(0.463 0.081 237.95);
+	--color-primary-800: oklch(0.388 0.069 238.92);
+	--color-primary-900: oklch(0.265 0.047 240.22);
+	--color-primary-950: oklch(0.196 0.035 239.65);
+
+	--color-secondary-50: oklch(0.959 0.019 29.62);
+	--color-secondary-100: oklch(0.919 0.04 31.22);
+	--color-secondary-200: oklch(0.837 0.087 32.12);
+	--color-secondary-300: oklch(0.756 0.144 36.25);
+	--color-secondary-400: oklch(0.674 0.191 42.86);
+	--color-secondary-500: oklch(0.587 0.166 42.93);
+	--color-secondary-600: oklch(0.497 0.141 42.84);
+	--color-secondary-700: oklch(0.409 0.116 42.89);
+	--color-secondary-800: oklch(0.32 0.091 43.12);
+	--color-secondary-900: oklch(0.231 0.065 43.49);
+	--color-secondary-950: oklch(0.182 0.052 41.14);
+
+	--color-tertiary-50: oklch(0.964 0.018 223.53);
+	--color-tertiary-100: oklch(0.929 0.038 219.86);
+	--color-tertiary-200: oklch(0.864 0.076 217.34);
+	--color-tertiary-300: oklch(0.793 0.094 215.8);
+	--color-tertiary-400: oklch(0.731 0.087 216);
+	--color-tertiary-500: oklch(0.631 0.075 216.54);
+	--color-tertiary-600: oklch(0.53 0.063 215.99);
+	--color-tertiary-700: oklch(0.434 0.051 216.38);
+	--color-tertiary-800: oklch(0.332 0.039 216.57);
+	--color-tertiary-900: oklch(0.238 0.028 219.55);
+	--color-tertiary-950: oklch(0.185 0.021 218);
+
+	--color-success-50: oklch(0.959 0.048 147.99);
+	--color-success-100: oklch(0.91 0.123 147.3);
+	--color-success-200: oklch(0.828 0.166 146.8);
+	--color-success-300: oklch(0.752 0.152 146.7);
+	--color-success-400: oklch(0.678 0.136 146.87);
+	--color-success-500: oklch(0.591 0.118 146.87);
+	--color-success-600: oklch(0.499 0.101 146.75);
+	--color-success-700: oklch(0.406 0.081 146.74);
+	--color-success-800: oklch(0.312 0.062 146.56);
+	--color-success-900: oklch(0.228 0.046 146.79);
+	--color-success-950: oklch(0.173 0.035 147.54);
+
+	--color-danger-50: oklch(0.96 0.015 27.38);
+	--color-danger-100: oklch(0.918 0.033 24.85);
+	--color-danger-200: oklch(0.844 0.066 26.72);
+	--color-danger-300: oklch(0.762 0.111 28.79);
+	--color-danger-400: oklch(0.683 0.168 33.24);
+	--color-danger-500: oklch(0.599 0.158 34.59);
+	--color-danger-600: oklch(0.506 0.134 34.24);
+	--color-danger-700: oklch(0.417 0.11 34.66);
+	--color-danger-800: oklch(0.329 0.086 34.46);
+	--color-danger-900: oklch(0.23 0.06 34.19);
+	--color-danger-950: oklch(0.181 0.048 33.21);
+
+	--color-warning-50: oklch(0.967 0.02 70);
+	--color-warning-100: oklch(0.932 0.042 68.41);
+	--color-warning-200: oklch(0.865 0.099 73.73);
+	--color-warning-300: oklch(0.788 0.138 78.23);
+	--color-warning-400: oklch(0.72 0.126 78.59);
+	--color-warning-500: oklch(0.633 0.111 78.69);
+	--color-warning-600: oklch(0.546 0.095 78.91);
+	--color-warning-700: oklch(0.468 0.082 78.39);
+	--color-warning-800: oklch(0.382 0.067 78.58);
+	--color-warning-900: oklch(0.294 0.051 79.09);
+	--color-warning-950: oklch(0.251 0.044 79.08);
+
+	--color-info-50: oklch(0.96 0.045 194.68);
+	--color-info-100: oklch(0.931 0.082 194.86);
+	--color-info-200: oklch(0.859 0.102 194.63);
+	--color-info-300: oklch(0.799 0.095 194.55);
+	--color-info-400: oklch(0.739 0.088 194.46);
+	--color-info-500: oklch(0.647 0.077 194.29);
+	--color-info-600: oklch(0.561 0.066 195.41);
+	--color-info-700: oklch(0.467 0.056 193.74);
+	--color-info-800: oklch(0.383 0.046 193.28);
+	--color-info-900: oklch(0.287 0.034 195.41);
+	--color-info-950: oklch(0.246 0.029 195.42);
+}
+
+/*
+    Z-index utility classes for layering elements
+  */
+@utility z-sticky {
+	z-index: 10;
+}
+
+@utility z-fixed {
+	z-index: 20;
+}
+
+@utility z-dropdown {
+	z-index: 1000;
+}
+
+@utility z-mobile-backdrop {
+	z-index: 1005;
+}
+
+@utility z-mobile-menu {
+	z-index: 1010;
+}
+
+@utility z-modal-backdrop {
+	z-index: 1030;
+}
+
+@utility z-modal {
+	z-index: 1040;
+}
+
+@utility z-toast {
+	z-index: 1050;
+}
+
+@utility z-tooltip {
+	z-index: 1070;
+}
+
+@utility pl-space {
+	padding-left: max(
+		calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-xs)),
+		var(--px-inline-xs)
+	);
+	@media only screen and (min-width: 480px) {
+		padding-left: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-sm)),
+			var(--px-inline-sm)
+		);
+	}
+	@media only screen and (min-width: 640px) {
+		padding-left: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-md)),
+			var(--px-inline-md)
+		);
+	}
+	@media only screen and (min-width: 1024px) {
+		padding-left: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-lg)),
+			var(--px-inline-lg)
+		);
+	}
+	@media only screen and (min-width: 1280px) {
+		padding-left: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-xl)),
+			var(--px-inline-xl)
+		);
+	}
+	@media only screen and (min-width: 1440px) {
+		padding-left: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-2xl)),
+			var(--px-inline-2xl)
+		);
+	}
+	@media only screen and (min-width: 1536px) {
+		padding-left: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-3xl)),
+			var(--px-inline-3xl)
+		);
+	}
+}
+
+@utility pr-space {
+	padding-right: max(
+		calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-xs)),
+		var(--px-inline-xs)
+	);
+	@media only screen and (min-width: 480px) {
+		padding-right: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-sm)),
+			var(--px-inline-sm)
+		);
+	}
+	@media only screen and (min-width: 640px) {
+		padding-right: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-md)),
+			var(--px-inline-md)
+		);
+	}
+	@media only screen and (min-width: 1024px) {
+		padding-right: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-lg)),
+			var(--px-inline-lg)
+		);
+	}
+	@media only screen and (min-width: 1280px) {
+		padding-right: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-xl)),
+			var(--px-inline-xl)
+		);
+	}
+	@media only screen and (min-width: 1440px) {
+		padding-right: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-2xl)),
+			var(--px-inline-2xl)
+		);
+	}
+	@media only screen and (min-width: 1536px) {
+		padding-right: max(
+			calc(calc(100vw - var(--max-width-content)) / 2 - var(--px-inline-3xl)),
+			var(--px-inline-3xl)
+		);
+	}
+}
+
+@utility px-space {
+	@apply pl-space pr-space;
+}
+
+@utility hero-clip {
+	clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@utility edge-clip-xs {
+	clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0% 100%);
+}
+
+@utility edge-clip-sm {
+	clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0% 100%);
+}
+
+@utility edge-clip-md {
+	clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0% 100%);
+}
+
+@utility edge-clip-lg {
+	clip-path: polygon(20px 0, 100% 0, calc(100% - 20px) 100%, 0% 100%);
+}
+
+@utility br-clip-xs {
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% calc(100% - 10px),
+		calc(100% - 10px) 100%,
+		0 100%
+	);
+}
+
+@utility br-clip-sm {
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% calc(100% - 16px),
+		calc(100% - 16px) 100%,
+		0 100%
+	);
+}
+
+@utility br-clip-md {
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% calc(100% - 24px),
+		calc(100% - 24px) 100%,
+		0 100%
+	);
+}
+
+@utility br-clip-lg {
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% calc(100% - 32px),
+		calc(100% - 32px) 100%,
+		0 100%
+	);
+}
+
+@utility pattern-dots {
+	background-image: radial-gradient(
+		circle at 1px 1px,
+		currentColor 1px,
+		transparent 0
+	);
+	background-size: 16px 16px;
+	opacity: 0.4;
+}
+
+/*
+  Base styles applied globally, with good defaults
+*/
+@layer base {
+	:root {
+		--max-width-content: 768px;
+
+		--px-inline-xs: 12px;
+		--px-inline-sm: 12px;
+		--px-inline-md: 12px;
+		--px-inline-lg: 24px;
+		--px-inline-xl: 24px;
+		--px-inline-2xl: 24px;
+		--px-inline-3xl: 48px;
+	}
+
+	html {
+		@apply scroll-smooth bg-neutral-50 dark:bg-neutral-950;
+		background: image(url("/public/bedge-grunge.png")) repeat top left;
+	}
+
+	body {
+		@apply text-neutral-950 dark:text-neutral-50;
+	}
+
+	/*
+    Customize text selection styles
+  */
+	::selection {
+		@apply bg-primary-500 text-white dark:bg-primary-400 dark:text-neutral-950;
+	}
+
+	/*
+    Focus styles for accessibility
+  */
+	*:focus-visible {
+		@apply outline-none shadow-[0_0_0_2px_var(--color-white),0_0_0_4px_var(--color-black)];
+	}
+
+	/*
+    Remove focus outline for mouse users
+  */
+	*:focus:not(:focus-visible) {
+		@apply outline-none;
+	}
+
+	/*
+    The font sizes and line heights will change depending on the chosen font families.
+    Adjust the sizes here as needed to ensure proper vertical rhythm and readability.
+  */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-serif font-normal text-neutral-950 dark:text-neutral-50;
+	}
+
+	h1 {
+		@apply text-4xl leading-12 mb-8 md:text-5xl md:leading-16 xl:text-6xl xl:leading-18;
+	}
+
+	h2 {
+		@apply text-3xl leading-10 mb-8 md:text-4xl md:leading-12 xl:text-5xl xl:leading-16;
+	}
+
+	h3 {
+		@apply text-2xl leading-8 mb-5 md:text-3xl md:leading-10 xl:text-4xl xl:leading-12;
+	}
+
+	h4 {
+		@apply text-xl leading-6 mb-5 md:text-2xl md:leading-8 xl:text-3xl xl:leading-10;
+	}
+
+	h5 {
+		@apply text-lg leading-6 mb-5 md:text-xl md:leading-6 xl:text-2xl xl:leading-8;
+	}
+
+	h6 {
+		@apply text-sm leading-5 mb-5 md:text-base md:leading-6 xl:text-lg;
+	}
+
+	p {
+		@apply font-sans text-base leading-normal text-neutral-900 dark:text-neutral-100;
+	}
+
+	/*
+    Ensure all interactive elements have a pointer cursor
+  */
+	a,
+	button,
+	input[type="button"],
+	input[type="submit"] {
+		@apply cursor-pointer;
+	}
+
+	/*
+    Standardize form element styles
+  */
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="number"],
+	input[type="date"],
+	input[type="password"],
+	input[type="search"],
+	textarea,
+	select {
+		@apply block w-full px-4 py-2.5 rounded-md border border-neutral-300 bg-white text-neutral-900 transition-colors duration-200 placeholder:text-neutral-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-neutral-950/25 disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-50 dark:placeholder:text-neutral-500 dark:focus:border-primary-400 dark:focus:ring-neutral-50/25 dark:disabled:bg-neutral-800 dark:disabled:text-neutral-400;
+	}
+
+	textarea {
+		@apply min-h-[120px] resize-y;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		@apply h-4 w-4 rounded border-neutral-300 text-primary-500 bg-white focus:ring-2 focus:ring-neutral-950/25 focus:ring-offset-0 dark:border-neutral-700 dark:bg-neutral-900 dark:text-primary-400 dark:focus:ring-neutral-50/25;
+	}
+
+	input[type="radio"] {
+		@apply rounded-full;
+	}
+
+	label {
+		@apply block text-sm font-medium text-neutral-700 mb-1.5 dark:text-neutral-300;
+	}
+
+	.max-w-content {
+		max-width: var(--max-width-content);
+	}
+
+	.card-gradient-dark {
+		background: linear-gradient(
+			0deg,
+			oklch(0.196 0.035 239.65 / 0.75) 30%,
+			oklch(0.196 0.035 239.65 / 0.45) 40%,
+			rgba(0, 0, 0, 0) 60%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		z-index: 1;
+	}
+}

@@ -3,6 +3,16 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "allowImportingTsExtensions": true
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@sections/*": ["src/components/sections/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@type/*": ["src/types/*"]
+    }
   }
 }

@@ -1,0 +1,21 @@
+---
+import Button from "@ui/elements/Button.astro";
+
+export type Props = {
+	class?: string;
+};
+
+const { class: className } = Astro.props;
+---
+
+<footer class={className} role="contentinfo">
+	<div class="relative">
+		<div class="absolute inset-0 -z-10 pointer-events-none"></div>
+
+		<div class="px-space py-16 md:py-20">
+			<div
+				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12"
+			></div>
+		</div>
+	</div>
+</footer>

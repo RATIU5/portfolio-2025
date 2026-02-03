@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-2025",
+  "name": "root",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,18 +7,29 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postinstall": "croct --no-interaction install"
+    "migrate": "studiocms migrate",
+    "studiocms": "studiocms"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.4",
-    "@croct/content": "^1.1.0",
-    "@croct/plug": "^0.18.1",
-    "@tailwindcss/typography": "^0.5.16",
-    "astro": "^5.1.5",
-    "tailwindcss": "^3.4.17"
+    "@astrojs/node": "^9.5.2",
+    "@libsql/client": "^0.15.15",
+    "@studiocms/html": "^0.2.0",
+    "@studiocms/md": "^0.2.0",
+    "@studiocms/mdx": "^0.2.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "class-variance-authority": "^0.7.1",
+    "effect": "^3.19.15",
+    "kysely-turso": "^0.1.1",
+    "mysql2": "^3.16.2",
+    "pg": "^8.18.0",
+    "roughjs": "^4.6.6",
+    "studiocms": "^0.2.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
-    "croct": "^0.9.1"
+    "@biomejs/biome": "^2.3.13",
+    "@tailwindcss/typography": "^0.5.19",
+    "vite": "^6.3.4"
   }
 }
