@@ -2,6 +2,7 @@
 import { Font } from "astro:assets";
 import SketchLinks from "@components/global/SketchLinks.astro";
 import SketchButtons from "@components/global/SketchButtons.astro";
+import DitherImages from "@components/global/DitherImages.astro";
 
 import "@styles/global.css";
 
@@ -28,5 +29,6 @@ const { class: className } = Astro.props;
 		<slot />
 		<SketchLinks />
 		<SketchButtons />
+		<DitherImages />
 	</body>
 </html>

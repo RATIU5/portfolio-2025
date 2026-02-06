@@ -10,6 +10,7 @@ export default defineStudioCMSConfig({
   plugins: [html(), md(), mdx()],
   componentRegistry: {
     'a': './src/components/ui/registry/A.astro',
+    'img': './src/components/ui/registry/Img.astro',
   },
   verbose: true,
 })

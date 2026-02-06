@@ -289,18 +289,19 @@
 	:root {
 		--max-width-content: 768px;
 
-		--px-inline-xs: 12px;
-		--px-inline-sm: 12px;
-		--px-inline-md: 12px;
-		--px-inline-lg: 24px;
-		--px-inline-xl: 24px;
-		--px-inline-2xl: 24px;
+		--px-inline-xs: 20px;
+		--px-inline-sm: 20px;
+		--px-inline-md: 20px;
+		--px-inline-lg: 32px;
+		--px-inline-xl: 32px;
+		--px-inline-2xl: 32px;
 		--px-inline-3xl: 48px;
 	}
 
 	html {
 		@apply scroll-smooth bg-neutral-50 dark:bg-neutral-950;
 		background: image(url("/public/bedge-grunge.png")) repeat top left;
+		scroll-padding-top: 120px;
 	}
 
 	body {

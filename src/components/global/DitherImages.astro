@@ -1,0 +1,415 @@
+---
+---
+
+<script>
+const VERTEX_SHADER = `
+	attribute vec2 a_position;
+	attribute vec2 a_texCoord;
+	varying vec2 v_texCoord;
+	void main() {
+		gl_Position = vec4(a_position, 0.0, 1.0);
+		v_texCoord = a_texCoord;
+	}
+`;
+
+const FRAGMENT_SHADER = `
+	precision mediump float;
+	varying vec2 v_texCoord;
+	uniform sampler2D u_image;
+	uniform vec2 u_resolution;
+	uniform float u_ditherSize;
+	uniform float u_strength;
+	uniform float u_dotScale;
+	uniform float u_roughness;
+
+	// Pseudo-random hash function
+	float hash(vec2 p) {
+		vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+		p3 += dot(p3, p3.yzx + 33.33);
+		return fract((p3.x + p3.y) * p3.z);
+	}
+
+	vec2 hash2(vec2 p) {
+		return vec2(hash(p), hash(p + vec2(127.1, 311.7)));
+	}
+
+	void main() {
+		vec4 color = texture2D(u_image, v_texCoord);
+
+		vec2 pixelPos = v_texCoord * u_resolution;
+		vec2 cellPos = pixelPos / u_ditherSize;
+		vec2 cellIndex = floor(cellPos);
+		vec2 cellCenter = (cellIndex + 0.5) * u_ditherSize;
+
+		// Add roughness: offset cell center and vary radius
+		vec2 noise = hash2(cellIndex) * 2.0 - 1.0;
+		vec2 offsetCenter = cellCenter + noise * u_ditherSize * u_roughness * 0.3;
+		float radiusNoise = hash(cellIndex + vec2(42.0, 17.0)) * 2.0 - 1.0;
+
+		vec2 cellCenterUV = offsetCenter / u_resolution;
+		float cellGray = dot(texture2D(u_image, clamp(cellCenterUV, 0.0, 1.0)).rgb, vec3(0.299, 0.587, 0.114));
+
+		float dist = length(pixelPos - offsetCenter);
+
+		// Cap max radius to half cell size to prevent squares
+		float maxRadius = u_ditherSize * 0.5 * u_dotScale;
+		// Vary radius based on roughness
+		float radiusVariation = 1.0 + radiusNoise * u_roughness * 0.25;
+		float radius = maxRadius * (1.0 - cellGray) * radiusVariation;
+
+		// Anti-aliased circle edge
+		float edge = 1.0;
+		float halftone = 1.0 - smoothstep(radius - edge, radius + edge, dist);
+
+		float dot = 1.0 - halftone;
+		vec3 halftoneBW = vec3(dot);
+		vec3 finalColor = mix(color.rgb, halftoneBW, u_strength);
+		float alpha = mix(color.a, halftone, u_strength);
+		gl_FragColor = vec4(finalColor, alpha);
+	}
+`;
+
+interface DitherConfig {
+	size: number;
+	animationSpeed: number;
+	dotScale: number;
+	roughness: number;
+}
+
+const DEFAULT_CONFIG: DitherConfig = {
+	size: 3,
+	animationSpeed: 1,
+	dotScale: 1.25,
+	roughness: 0.35,
+};
+
+interface DitherInstance {
+	gl: WebGLRenderingContext;
+	program: WebGLProgram;
+	strengthLocation: WebGLUniformLocation;
+	resolutionLocation: WebGLUniformLocation;
+	currentStrength: number;
+	targetStrength: number;
+	animationId: number | null;
+	config: DitherConfig;
+	img: HTMLImageElement;
+	canvas: HTMLCanvasElement;
+}
+
+const instances = new WeakMap<HTMLCanvasElement, DitherInstance>();
+let resizeTimeout: number | null = null;
+const RESIZE_DEBOUNCE_MS = 150;
+
+function createShader(
+	gl: WebGLRenderingContext,
+	type: number,
+	source: string
+): WebGLShader | null {
+	const shader = gl.createShader(type);
+	if (!shader) return null;
+	gl.shaderSource(shader, source);
+	gl.compileShader(shader);
+	if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+		console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+		gl.deleteShader(shader);
+		return null;
+	}
+	return shader;
+}
+
+function createProgram(
+	gl: WebGLRenderingContext,
+	vertexShader: WebGLShader,
+	fragmentShader: WebGLShader
+): WebGLProgram | null {
+	const program = gl.createProgram();
+	if (!program) return null;
+	gl.attachShader(program, vertexShader);
+	gl.attachShader(program, fragmentShader);
+	gl.linkProgram(program);
+	if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+		console.error("Program link error:", gl.getProgramInfoLog(program));
+		gl.deleteProgram(program);
+		return null;
+	}
+	return program;
+}
+
+function initDither(img: HTMLImageElement) {
+	const config = { ...DEFAULT_CONFIG };
+
+	const computedStyle = window.getComputedStyle(img);
+	const wrapper = document.createElement("div");
+	wrapper.className = "dither-container";
+	wrapper.style.marginTop = computedStyle.marginTop;
+	wrapper.style.marginLeft = computedStyle.marginLeft;
+	wrapper.style.marginRight = computedStyle.marginRight;
+	img.style.margin = "0";
+	img.parentNode?.insertBefore(wrapper, img);
+	wrapper.appendChild(img);
+
+	const canvas = document.createElement("canvas");
+	canvas.className = "dither-canvas";
+	wrapper.appendChild(canvas);
+
+	const setup = () => {
+		const dpr = window.devicePixelRatio || 1;
+		const displayWidth = img.clientWidth || img.naturalWidth || img.width;
+		const displayHeight = img.clientHeight || img.naturalHeight || img.height;
+
+		canvas.width = displayWidth * dpr;
+		canvas.height = displayHeight * dpr;
+		canvas.style.width = `${displayWidth}px`;
+		canvas.style.height = `${displayHeight}px`;
+
+		const gl = canvas.getContext("webgl", {
+			preserveDrawingBuffer: true,
+			antialias: true,
+			premultipliedAlpha: false,
+			alpha: true,
+		});
+		if (!gl) return;
+
+		gl.enable(gl.BLEND);
+		gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+		gl.clearColor(0, 0, 0, 0);
+
+		const vertexShader = createShader(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
+		const fragmentShader = createShader(
+			gl,
+			gl.FRAGMENT_SHADER,
+			FRAGMENT_SHADER
+		);
+		if (!vertexShader || !fragmentShader) return;
+
+		const program = createProgram(gl, vertexShader, fragmentShader);
+		if (!program) return;
+
+		gl.useProgram(program);
+
+		const positionBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+		gl.bufferData(
+			gl.ARRAY_BUFFER,
+			new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+			gl.STATIC_DRAW
+		);
+
+		const positionLocation = gl.getAttribLocation(program, "a_position");
+		gl.enableVertexAttribArray(positionLocation);
+		gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+		const texCoordBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+		gl.bufferData(
+			gl.ARRAY_BUFFER,
+			new Float32Array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0]),
+			gl.STATIC_DRAW
+		);
+
+		const texCoordLocation = gl.getAttribLocation(program, "a_texCoord");
+		gl.enableVertexAttribArray(texCoordLocation);
+		gl.vertexAttribPointer(texCoordLocation, 2, gl.FLOAT, false, 0, 0);
+
+		const texture = gl.createTexture();
+		gl.bindTexture(gl.TEXTURE_2D, texture);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+
+		const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+		gl.uniform2f(resolutionLocation, displayWidth * dpr, displayHeight * dpr);
+		gl.uniform1f(
+			gl.getUniformLocation(program, "u_ditherSize"),
+			config.size * dpr
+		);
+		gl.uniform1f(gl.getUniformLocation(program, "u_dotScale"), config.dotScale);
+		gl.uniform1f(
+			gl.getUniformLocation(program, "u_roughness"),
+			config.roughness
+		);
+
+		const strengthLocation = gl.getUniformLocation(program, "u_strength");
+		if (!strengthLocation || !resolutionLocation) return;
+
+		gl.viewport(0, 0, canvas.width, canvas.height);
+
+		const instance: DitherInstance = {
+			gl,
+			program,
+			strengthLocation,
+			resolutionLocation,
+			currentStrength: 1.0,
+			targetStrength: 1.0,
+			animationId: null,
+			config,
+			img,
+			canvas,
+		};
+
+		instances.set(canvas, instance);
+
+		gl.uniform1f(strengthLocation, 1.0);
+		gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+		const isTouchDevice =
+			"ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+		if (isTouchDevice) {
+			let touchHandled = false;
+			wrapper.addEventListener("touchend", (e) => {
+				e.preventDefault();
+				touchHandled = true;
+				wrapper.classList.toggle("show-original");
+			});
+			wrapper.addEventListener("click", (e) => {
+				if (touchHandled) {
+					touchHandled = false;
+					e.preventDefault();
+					return;
+				}
+				wrapper.classList.toggle("show-original");
+			});
+		}
+	};
+
+	if (img.complete && img.naturalWidth > 0) {
+		setup();
+	} else {
+		img.addEventListener("load", setup, { once: true });
+	}
+}
+
+function animateStrength(canvas: HTMLCanvasElement) {
+	const instance = instances.get(canvas);
+	if (!instance) return;
+
+	const { gl, strengthLocation, targetStrength, config } = instance;
+	const diff = targetStrength - instance.currentStrength;
+
+	if (Math.abs(diff) < 0.01) {
+		instance.currentStrength = targetStrength;
+		instance.animationId = null;
+	} else {
+		instance.currentStrength += diff * config.animationSpeed;
+		instance.animationId = requestAnimationFrame(() => animateStrength(canvas));
+	}
+
+	gl.uniform1f(strengthLocation, instance.currentStrength);
+	gl.drawArrays(gl.TRIANGLES, 0, 6);
+}
+
+function setDitherStrength(canvas: HTMLCanvasElement, strength: number) {
+	const instance = instances.get(canvas);
+	if (!instance) return;
+
+	instance.targetStrength = strength;
+	if (instance.animationId === null) {
+		instance.animationId = requestAnimationFrame(() => animateStrength(canvas));
+	}
+}
+
+function initAll() {
+	document
+		.querySelectorAll<HTMLImageElement>("img[data-dither]")
+		.forEach((img) => {
+			if (img.dataset.ditherInit) return;
+			img.dataset.ditherInit = "true";
+			initDither(img);
+		});
+}
+
+function resizeInstance(instance: DitherInstance) {
+	const {
+		gl,
+		img,
+		canvas,
+		resolutionLocation,
+		strengthLocation,
+		currentStrength,
+		config,
+	} = instance;
+
+	const dpr = window.devicePixelRatio || 1;
+	const displayWidth = img.clientWidth;
+	const displayHeight = img.clientHeight;
+
+	canvas.width = displayWidth * dpr;
+	canvas.height = displayHeight * dpr;
+	canvas.style.width = `${displayWidth}px`;
+	canvas.style.height = `${displayHeight}px`;
+
+	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+	gl.uniform2f(resolutionLocation, displayWidth * dpr, displayHeight * dpr);
+	gl.uniform1f(
+		gl.getUniformLocation(instance.program, "u_ditherSize"),
+		config.size * dpr
+	);
+	gl.viewport(0, 0, displayWidth * dpr, displayHeight * dpr);
+	gl.uniform1f(strengthLocation, currentStrength);
+	gl.drawArrays(gl.TRIANGLES, 0, 6);
+}
+
+function handleResize() {
+	if (resizeTimeout) {
+		window.clearTimeout(resizeTimeout);
+	}
+	resizeTimeout = window.setTimeout(() => {
+		document
+			.querySelectorAll<HTMLCanvasElement>(".dither-canvas")
+			.forEach((canvas) => {
+				const instance = instances.get(canvas);
+				if (instance) resizeInstance(instance);
+			});
+		resizeTimeout = null;
+	}, RESIZE_DEBOUNCE_MS);
+}
+
+initAll();
+document.addEventListener("astro:page-load", initAll);
+window.addEventListener("resize", handleResize);
+</script>
+
+<style is:global>
+.dither-container {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	line-height: 0;
+}
+
+.dither-container > img[data-dither] {
+	display: block;
+	width: 100%;
+	height: auto;
+	opacity: 0;
+}
+
+.dither-canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.dither-container:hover > .dither-canvas,
+.dither-container.show-original > .dither-canvas {
+	opacity: 0;
+}
+
+.dither-container:hover > img[data-dither],
+.dither-container.show-original > img[data-dither] {
+	opacity: 1;
+}
+
+@media (pointer: coarse) {
+	.dither-container {
+		cursor: pointer;
+	}
+}
+</style>
