@@ -1,0 +1,28 @@
+---
+import { generateSketchLine, type SketchLineOptions } from "@utils/sketchLine";
+
+interface Props extends SketchLineOptions {
+	seed?: number;
+	width?: number;
+	height?: number;
+}
+
+const {
+	seed = 12345,
+	width = 100,
+	height = 8,
+	stroke,
+	strokeWidth,
+	roughness,
+	bowing,
+} = Astro.props;
+
+const svg = generateSketchLine(seed, width, height, {
+	stroke,
+	strokeWidth,
+	roughness,
+	bowing,
+});
+---
+
+<Fragment set:html={svg} />

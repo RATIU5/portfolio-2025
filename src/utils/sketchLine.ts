@@ -1,16 +1,18 @@
 import { DOMImplementation, XMLSerializer } from "@xmldom/xmldom";
 import rough from "roughjs";
 
-export function generateUnderlineSVG(
+export interface SketchLineOptions {
+	stroke?: string;
+	strokeWidth?: number;
+	roughness?: number;
+	bowing?: number;
+}
+
+export function generateSketchLine(
 	seed: number,
 	width = 100,
 	height = 8,
-	options?: {
-		stroke?: string;
-		strokeWidth?: number;
-		roughness?: number;
-		bowing?: number;
-	}
+	options?: SketchLineOptions
 ): string {
 	const {
 		stroke = "#2c2c2c",

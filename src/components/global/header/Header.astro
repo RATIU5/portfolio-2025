@@ -2,6 +2,9 @@
 import ResponsiveHeader from "@components/global/header/ResponsiveHeader.astro";
 import SketchDivider from "@components/ui/elements/SketchDivider.astro";
 import Button from "@ui/elements/Button.astro";
+import GithubIcon from "@assets/icons/github.svg?raw";
+import SearchIcon from "@assets/icons/search.svg?raw";
+import HamburgerIcon from "@assets/icons/hamburger.svg?raw";
 
 export type Props = {
 	class?: string;
@@ -10,6 +13,13 @@ export type Props = {
 const { class: className } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+
+const navItems = [{ href: "/", label: "articles" }];
+
+const iconLinks = [
+	{ href: "/search", label: "Search", icon: SearchIcon },
+	{ href: "https://github.com/RATIU5", label: "GitHub", icon: GithubIcon },
+];
 ---
 
 <ResponsiveHeader
@@ -22,39 +32,40 @@ const currentPath = Astro.url.pathname;
 	openClass="opacity-100 pointer-events-auto"
 	closedClass="opacity-0 pointer-events-none"
 >
-	<nav class="relative hidden md:block px-space pt-8">
-		<div class="w-full flex flex-col md:justify-center gap-4">
-			<div class="flex items-center justify-center gap-6">
-				<Button
-					type="link"
-					size="large"
-					href="/"
-					aria-current={currentPath === "/" ? "page" : undefined}
-				>
-					home
-				</Button>
-				<Button
-					type="link"
-					size="large"
-					href="/blog"
-					aria-current={currentPath === "/blog" ? "page" : undefined}
-				>
-					blog
-				</Button>
-				<Button
-					type="link"
-					size="large"
-					href="/about"
-					aria-current={currentPath === "/about" ? "page" : undefined}
-				>
-					about
-				</Button>
+	<nav class="relative hidden md:block px-space pt-5">
+		<div class="w-full flex flex-col gap-4">
+			<div class="flex items-center justify-between">
+				<div class="flex items-center gap-6">
+					{navItems.map((item) => (
+						<Button
+							type="link"
+							size="large"
+							href={item.href}
+							aria-current={currentPath === item.href ? "page" : undefined}
+						>
+							{item.label}
+						</Button>
+					))}
+				</div>
+				<div class="flex items-center gap-4 [&_svg]:w-9 [&_svg]:h-9">
+					{iconLinks.map((item) => (
+						<a
+							href={item.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={item.label}
+							class="hover:rotate-6 focus:rotate-6 hover:scale-110 focus:scale-110"
+						>
+							<Fragment set:html={item.icon} />
+						</a>
+					))}
+				</div>
 			</div>
 			<SketchDivider roughness={5} />
 		</div>
 	</nav>
 
-	<div class="mobile-header px-space py-3 md:hidden">
+	<div class="mobile-header px-space pt-3 md:hidden">
 		<div class="flex items-center justify-end">
 			<div class="flex items-center gap-3">
 				<button
@@ -63,39 +74,7 @@ const currentPath = Astro.url.pathname;
 					aria-label="Toggle menu"
 					class="p-2 -mr-2 text-neutral-900"
 				>
-					<svg
-						class="sketch-icon-svg"
-						width="32"
-						height="32"
-						viewBox="0 0 32 32"
-						aria-hidden="true"
-						data-initialized="true"
-					>
-						<g>
-							<path
-								d="M2.526895433664322 7.769478410482407 C5.400246489048005 6.3919931567907335, 17.568427866697313 3.719520202994347, 28.810686975717545 0.6710048615932465 M4.668873593211174 3.197217896580696 C13.350490227341652 5.295840908527374, 19.675463184714317 1.9506122364997864, 29.251426979899406 3.6317467242479324"
-								stroke="currentColor"
-								stroke-width="2"
-								fill="none"
-							></path>
-						</g>
-						<g>
-							<path
-								d="M0.24142232909798622 17.69724788889289 C8.760846735537053 16.545153149947524, 12.44839629456401 16.08600772319734, 31.223497662693262 17.45567586645484 M5.371542466804385 17.726415114477277 C12.741840717568994 17.005072749435904, 22.873138647899033 16.52049884873629, 26.090678406879306 15.13737847097218"
-								stroke="currentColor"
-								stroke-width="2"
-								fill="none"
-							></path>
-						</g>
-						<g>
-							<path
-								d="M5.9559492245316505 27.62501736730337 C12.1214469820261 26.986313143104315, 15.328364722430706 28.740495243400336, 25.63630834966898 26.240346871316433 M2.0742113403975964 28.255612332373857 C12.133191207796337 28.71430459034443, 22.07081411108375 27.090385460972787, 26.929929833859205 26.64301021769643"
-								stroke="currentColor"
-								stroke-width="2"
-								fill="none"
-							></path>
-						</g>
-					</svg>
+					<Fragment set:html={HamburgerIcon} />
 				</button>
 			</div>
 		</div>
@@ -153,31 +132,36 @@ const currentPath = Astro.url.pathname;
 				class="hidden in-data-[menu-state='open']:block"
 			/>
 		</div>
-		<nav class="flex-1 flex flex-col gap-2 px-space py-6 overflow-y-auto">
-			<Button
-				type="link"
-				size="large"
-				href="/"
-				aria-current={currentPath === "/" ? "page" : undefined}
-			>
-				home
-			</Button>
-			<Button
-				type="link"
-				size="large"
-				href="/blog"
-				aria-current={currentPath === "/blog" ? "page" : undefined}
-			>
-				blog
-			</Button>
-			<Button
-				type="link"
-				size="large"
-				href="/about"
-				aria-current={currentPath === "/about" ? "page" : undefined}
-			>
-				about
-			</Button>
+		<nav
+			class="flex-1 flex flex-col items-center justify-center px-space pb-32 overflow-y-auto"
+		>
+			<h2 class="text-7xl font-serif tracking-widest mb-32">menu</h2>
+			<div class="flex flex-col gap-4">
+				{navItems.map((item) => (
+					<Button
+						type="link"
+						size="large"
+						href={item.href}
+						aria-current={currentPath === item.href ? "page" : undefined}
+						class="text-4xl"
+					>
+						{item.label}
+					</Button>
+				))}
+			</div>
+			<div class="flex items-center gap-8 mt-12 [&_svg]:w-12 [&_svg]:h-12">
+				{iconLinks.map((item) => (
+					<a
+						href={item.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={item.label}
+						class="text-neutral-900 hover:rotate-6 focus:rotate-6 hover:scale-110 focus:scale-110"
+					>
+						<Fragment set:html={item.icon} />
+					</a>
+				))}
+			</div>
 		</nav>
 	</div>
 </ResponsiveHeader>

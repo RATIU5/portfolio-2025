@@ -1,9 +1,9 @@
 ---
-import { generateUnderlineSVG } from "@utils/sketchUnderline";
+import { generateSketchLine } from "@utils/sketchLine";
 
 const VARIANT_COUNT = 10;
 const underlineSvgs = Array.from({ length: VARIANT_COUNT }, (_, i) =>
-	generateUnderlineSVG(10000 + i * 1337, 100, 8)
+	generateSketchLine(10000 + i * 1337, 100, 8)
 );
 ---
 
