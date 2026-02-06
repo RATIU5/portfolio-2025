@@ -1,0 +1,24 @@
+---
+export interface Props {
+	class?: string;
+	isArticle?: boolean;
+}
+
+const { class: classNames = "", isArticle = false } = Astro.props;
+---
+
+<main
+	class:list={[
+  classNames
+]}
+	class="px-space"
+>
+	<div class="prose max-w-none prose-headings prose-anchor">
+		<slot />
+		{isArticle && (
+		  <div class="flex w-full justify-end">
+				<p class="font-bold">~~RATIU5</p>
+			</div>
+		)}
+	</div>
+</main>

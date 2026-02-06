@@ -1,15 +1,16 @@
 import { defineConfig, fontProviders } from 'astro/config';
-import { loadEnv } from "vite";
 import node from '@astrojs/node';
 import studiocms from 'studiocms';
-
 import tailwindcss from '@tailwindcss/vite';
 
-const { SITE_URL = "http://localhost:4321" } = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
+const site =
+    process.env.NODE_ENV === 'production'
+        ? 'https://ratiu5.dev'
+        : 'http://localhost:4321';
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
+  site,
   output: "server",
 
   adapter: node({
@@ -34,6 +35,25 @@ export default defineConfig({
         provider: fontProviders.google(),
         name: "Cutive Mono",
         cssVariable: "--cm",
+      },
+      {
+        provider: fontProviders.local(),
+        name: "Typrighter",
+        cssVariable: "--typrighter",
+        options: {
+          variants: [
+            {
+              weight: 400,
+              style: "normal",
+              src: ["./src/assets/fonts/typrighter.woff2", "./src/assets/fonts/typrighter.woff"]
+            },
+            {
+              weight: 700,
+              style: "normal",
+              src: ["./src/assets/fonts/typrighter-Bold.woff2", "./src/assets/fonts/typrighter-Bold.woff"]
+            }
+          ]
+        }
       }
     ]
   },

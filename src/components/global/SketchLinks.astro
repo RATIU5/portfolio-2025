@@ -1,0 +1,53 @@
+---
+import { generateUnderlineSVG } from "@utils/sketchUnderline";
+
+const VARIANT_COUNT = 10;
+const underlineSvgs = Array.from({ length: VARIANT_COUNT }, (_, i) =>
+	generateUnderlineSVG(10000 + i * 1337, 100, 8)
+);
+---
+
+<script is:inline define:vars={{ underlineSvgs }}>
+(() => {
+	let idx = 0;
+
+	const initSketchLinks = () => {
+		const links = document.querySelectorAll(".prose a:not(.anchor-link), a[data-sketch-prose]:not(.anchor-link)");
+		links.forEach((link) => {
+			if (link.dataset.sketchProseInit) return;
+
+			link.style.position = "relative";
+			link.style.display = "inline-block";
+			link.style.textDecoration = "none";
+
+			const wrapper = document.createElement("span");
+			wrapper.innerHTML = underlineSvgs[idx % underlineSvgs.length];
+			idx++;
+			const svg = wrapper.firstChild;
+
+			svg.style.position = "absolute";
+			svg.style.left = "0";
+			svg.style.bottom = "5px";
+			svg.style.width = "100%";
+			svg.style.height = "6px";
+			svg.style.pointerEvents = "none";
+			svg.classList.add("sketch-underline");
+
+			link.appendChild(svg);
+			link.dataset.sketchProseInit = "true";
+		});
+	};
+
+	initSketchLinks();
+	document.addEventListener("astro:page-load", () => {
+		idx = 0;
+		initSketchLinks();
+	});
+})();
+</script>
+
+<style is:global>
+[data-sketch-prose]:hover .sketch-underline {
+	transform: translateY(2px);
+}
+</style>

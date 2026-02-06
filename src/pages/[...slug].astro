@@ -1,31 +1,41 @@
 ---
-import { StudioCMSRenderer } from 'studiocms:renderer';
-import { SDKCoreJs, runSDK } from 'studiocms:sdk';
-import Page from '../layouts/Page.astro';
+import { StudioCMSRenderer } from "studiocms:renderer";
+import { SDKCoreJs, runSDK } from "studiocms:sdk";
+import Page from "../layouts/Page.astro";
+import Main from "../components/ui/sections/Main.astro";
+import ProseMain from "../components/ui/sections/ProseMain.astro";
 
 let { slug } = Astro.params;
 
 if (!slug) {
-  slug = 'index';
+	slug = "index";
 }
 
-const data = await runSDK(SDKCoreJs.GET.page.bySlug(slug))
+const data = await runSDK(SDKCoreJs.GET.page.bySlug(slug));
 
 if (!data) {
-  return new Response(null, { status: 404 });
+	return new Response(null, { status: 404 });
 }
 
-const { title, description, heroImage, tags } = data;
+const { title, description, heroImage, parentFolder } = data;
+
+let isArticle = false;
+if (parentFolder) {
+	const parentFolderData = await runSDK(SDKCoreJs.GET.folder(parentFolder));
+	if (parentFolderData?.name.toLowerCase() === "article") {
+		isArticle = true;
+	}
+}
 ---
 
-<Page title={title} description={description} heroImage={heroImage}>
-  <Fragment slot="head">
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    {heroImage && <meta property="og:image" content={heroImage} />}
-  </Fragment>
-  <main>
-    <StudioCMSRenderer data={data} />
-  </main>
-</Layout>
+<Page>
+	<Fragment slot="head">
+		<meta property="og:type" content="article">
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content={description}>
+		{heroImage && <meta property="og:image" content={heroImage} />}
+	</Fragment>
+	<ProseMain {isArticle}>
+		<StudioCMSRenderer data={data} />
+	</ProseMain>
+</Page>

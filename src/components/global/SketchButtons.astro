@@ -1,0 +1,123 @@
+---
+---
+
+<script>
+import rough from "roughjs";
+
+const SKETCH_CONFIG = {
+	button: {
+		strokeWidth: 2.5,
+		bowing: 1.5,
+		fillStyle: "solid" as const,
+		roughness: 2,
+	},
+	link: { strokeWidth: 2, bowing: 0.3, roughness: 1.25 },
+	depth: { strokeWidth: 1.5, roughness: 1.2 },
+};
+
+function initSketchElement(el: Element) {
+	const svg = el.querySelector(".sketch-svg") as SVGSVGElement;
+	if (!svg || svg.dataset.initialized) return;
+
+	const sketchType = el.getAttribute("data-sketch-type");
+	const stroke = el.getAttribute("data-stroke") || "#2c2c2c";
+
+	const rc = rough.svg(svg);
+	const seed = Math.floor(Math.random() * 65536);
+
+	if (sketchType === "link") {
+		const textEl = el.querySelector("span");
+		const textWidth = textEl?.offsetWidth || 100;
+		const svgHeight = parseInt(svg.getAttribute("height") || "7", 10);
+
+		svg.setAttribute("width", String(textWidth));
+		svg.style.overflow = "visible";
+
+		const lineY = svgHeight / 2;
+		const line = rc.line(0, lineY, textWidth, lineY, {
+			stroke,
+			...SKETCH_CONFIG.link,
+			seed,
+		});
+		svg.appendChild(line);
+	} else {
+		const rect = el.getBoundingClientRect();
+		const depthOffset = parseInt(
+			el.getAttribute("data-depth-offset") || "6",
+			10
+		);
+		const lineSpacing = parseInt(
+			el.getAttribute("data-line-spacing") || "5",
+			10
+		);
+		const fill = el.getAttribute("data-fill") || "#ffffff";
+
+		const padding = 4;
+		const width = rect.width;
+		const height = rect.height;
+		const svgWidth = width + depthOffset;
+		const svgHeight = height + depthOffset;
+
+		svg.setAttribute("width", String(svgWidth));
+		svg.setAttribute("height", String(svgHeight));
+		svg.style.left = `-${padding}px`;
+		svg.style.top = `-${padding}px`;
+		svg.style.width = `${svgWidth}px`;
+		svg.style.height = `${svgHeight}px`;
+
+		const depthGroup = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"g"
+		);
+		depthGroup.classList.add("depth-lines");
+
+		const numLines = Math.floor(width / lineSpacing);
+		for (let i = 0; i < numLines; i++) {
+			const x = padding + i * lineSpacing;
+			const line = rc.line(
+				x,
+				padding + height - padding * 2,
+				x + depthOffset,
+				padding + height - padding * 2 + depthOffset,
+				{ stroke, ...SKETCH_CONFIG.depth, seed: 1000 + i }
+			);
+			depthGroup.appendChild(line);
+		}
+		svg.appendChild(depthGroup);
+
+		const rectShape = rc.rectangle(
+			padding,
+			padding,
+			width - padding * 2,
+			height - padding * 2,
+			{
+				stroke,
+				fill,
+				...SKETCH_CONFIG.button,
+				seed: 12345,
+			}
+		);
+		svg.appendChild(rectShape);
+	}
+
+	svg.dataset.initialized = "true";
+}
+
+function initAll() {
+	document.querySelectorAll("[data-sketch-type]").forEach(initSketchElement);
+}
+
+initAll();
+document.addEventListener("astro:page-load", initAll);
+</script>
+
+<style is:global>
+.sketch-button:hover .depth-lines,
+.sketch-button:active .depth-lines {
+	display: none;
+}
+
+.sketch-link:hover .sketch-svg {
+	transform: translateY(2px);
+}
+</style>
