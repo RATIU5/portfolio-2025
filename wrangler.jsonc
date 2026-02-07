@@ -1,0 +1,17 @@
+{
+  "main": "dist/_worker.js/index.js",
+  "name": "portfolio-2026",
+  // Update to today's date
+  "compatibility_date": "2026-02-07",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
