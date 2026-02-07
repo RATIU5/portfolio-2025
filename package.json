@@ -15,6 +15,7 @@
     "@astrojs/node": "^9.5.2",
     "@astrojs/vercel": "^9.0.4",
     "@libsql/client": "^0.15.15",
+    "@shikijs/rehype": "^3.22.0",
     "@studiocms/html": "^0.2.0",
     "@studiocms/md": "^0.2.0",
     "@studiocms/mdx": "^0.2.0",
