@@ -1,4 +1,5 @@
 import { defineStudioCMSConfig } from "studiocms/config"
+import md from '@studiocms/md';
 import mdx from '@studiocms/mdx';
 import s3Storage from '@studiocms/s3-storage';
 import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
@@ -22,6 +23,7 @@ export default defineStudioCMSConfig({
   dbStartPage: false,
   storageManager: s3Storage(),
   plugins: [
+    md(),
     mdx({
       rehypePlugins: [
         [rehypeShikiFromHighlighter, highlighter, { theme: 'gruvbox-light-soft' }],
