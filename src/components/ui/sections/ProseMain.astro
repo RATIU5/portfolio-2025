@@ -13,7 +13,9 @@ const { class: classNames = "", isArticle = false } = Astro.props;
 ]}
 	class="px-space"
 >
-	<div class="prose max-w-none prose-headings prose-anchor">
+	<div
+		class="prose max-w-none prose-headings prose-anchor prose-precode prose-lists"
+	>
 		<slot />
 		{isArticle && (
 		  <div class="flex w-full justify-end">

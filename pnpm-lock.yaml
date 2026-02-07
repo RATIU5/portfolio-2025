@@ -14,6 +14,9 @@ importers:
       '@libsql/client':
         specifier: ^0.15.15
         version: 0.15.15
+      '@shikijs/rehype':
+        specifier: ^3.22.0
+        version: 3.22.0
       '@studiocms/html':
         specifier: ^0.2.0
         version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)
@@ -59,6 +62,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.3.13
@@ -1204,6 +1210,9 @@ packages:
 
   '@shikijs/langs@3.22.0':
     resolution: {integrity: sha512-x/42TfhWmp6H00T6uwVrdTJGKgNdFbrEdhaDwSR5fd5zhQ1Q46bHq9EO61SCEWJR0HY7z2HNDMaBZp8JRmKiIA==}
+
+  '@shikijs/rehype@3.22.0':
+    resolution: {integrity: sha512-69b2VPc6XBy/VmAJlpBU5By+bJSBdE2nvgRCZXav7zujbrjXuT0F60DIrjKuutjPqNufuizE+E8tIZr2Yn8Z+g==}
 
   '@shikijs/themes@3.22.0':
     resolution: {integrity: sha512-o+tlOKqsr6FE4+mYJG08tfCFDS+3CG20HbldXeVoyP+cYSUxDhrFf3GPjE60U55iOkkjbpY2uC3It/eeja35/g==}
@@ -4815,6 +4824,15 @@ snapshots:
   '@shikijs/langs@3.22.0':
     dependencies:
       '@shikijs/types': 3.22.0
+
+  '@shikijs/rehype@3.22.0':
+    dependencies:
+      '@shikijs/types': 3.22.0
+      '@types/hast': 3.0.4
+      hast-util-to-string: 3.0.1
+      shiki: 3.22.0
+      unified: 11.0.5
+      unist-util-visit: 5.1.0
 
   '@shikijs/themes@3.22.0':
     dependencies:

@@ -1,0 +1,116 @@
+---
+---
+
+<script>
+import rough from "roughjs";
+
+let idx = 0;
+let resizeTimeout: number | null = null;
+const RESIZE_DEBOUNCE_MS = 150;
+
+const seedMap = new WeakMap<Element, number>();
+
+const drawSketchRect = (wrapper: Element, svg: SVGSVGElement, seed: number) => {
+	const rect = wrapper.getBoundingClientRect();
+	const width = rect.width;
+	const height = rect.height;
+
+	svg.setAttribute("width", String(width));
+	svg.setAttribute("height", String(height));
+	svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+	while (svg.firstChild) {
+		svg.removeChild(svg.firstChild);
+	}
+
+	const rc = rough.svg(svg);
+	const padding = 10;
+	const sketchRect = rc.rectangle(
+		padding,
+		padding,
+		width - padding * 2,
+		height - padding * 2,
+		{
+			stroke: "#2c2c2c",
+			strokeWidth: 2,
+			roughness: 1.75,
+			bowing: 1,
+			seed,
+		}
+	);
+
+	svg.appendChild(sketchRect);
+};
+
+const initSketchCodeBlocks = () => {
+	const codeBlocks = document.querySelectorAll('pre[data-sketch-code="true"]');
+
+	codeBlocks.forEach((block) => {
+		if (block.dataset.sketchCodeInit) return;
+
+		// Create wrapper
+		const wrapper = document.createElement("div");
+		wrapper.className = "sketch-code-wrapper";
+		block.parentNode?.insertBefore(wrapper, block);
+		wrapper.appendChild(block);
+
+		const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.setAttribute("aria-hidden", "true");
+		svg.classList.add("sketch-code-border");
+
+		const seed = 20000 + idx * 1337;
+		seedMap.set(wrapper, seed);
+		idx++;
+
+		drawSketchRect(wrapper, svg, seed);
+
+		wrapper.appendChild(svg);
+		block.dataset.sketchCodeInit = "true";
+	});
+};
+
+const handleResize = () => {
+	if (resizeTimeout) {
+		window.clearTimeout(resizeTimeout);
+	}
+	resizeTimeout = window.setTimeout(() => {
+		const wrappers = document.querySelectorAll(".sketch-code-wrapper");
+		wrappers.forEach((wrapper) => {
+			const svg = wrapper.querySelector(
+				".sketch-code-border"
+			) as SVGSVGElement | null;
+			const seed = seedMap.get(wrapper);
+			if (svg && seed !== undefined) {
+				drawSketchRect(wrapper, svg, seed);
+			}
+		});
+		resizeTimeout = null;
+	}, RESIZE_DEBOUNCE_MS);
+};
+
+initSketchCodeBlocks();
+document.addEventListener("astro:page-load", () => {
+	idx = 0;
+	initSketchCodeBlocks();
+});
+window.addEventListener("resize", handleResize);
+</script>
+
+<style is:global>
+.sketch-code-wrapper {
+	position: relative;
+	display: block;
+}
+
+.sketch-code-wrapper > .sketch-code-border {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.sketch-code-wrapper > pre {
+	position: relative;
+	z-index: 0;
+}
+</style>

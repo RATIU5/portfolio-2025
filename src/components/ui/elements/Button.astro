@@ -63,6 +63,7 @@ interface LinkProps extends ButtonBase {
 	target?: "_blank" | "_self" | "_parent" | "_top";
 	rel?: string;
 	underlineGap?: number;
+	iconPosition?: "left" | "right";
 }
 
 type Props = ButtonProps | LinkProps;
@@ -98,6 +99,8 @@ const fillColor = isLink
 const underlineGap = isLink
 	? ((rest as LinkProps).underlineGap ?? linkConfig.underlineGap)
 	: 0;
+const iconPosition = isLink ? ((rest as LinkProps).iconPosition ?? "right") : "right";
+const hasIcon = Astro.slots.has("icon");
 
 const dataAttrs = {
 	"data-sketch-type": type,
@@ -135,6 +138,10 @@ const linkTextClasses = [
 	"relative font-bold tracking-wider font-sans",
 	linkConfig.text,
 ];
+
+const linkContentClasses = [
+	hasIcon && "inline-flex items-center gap-1",
+];
 ---
 
 {isLink ? (
@@ -143,11 +150,14 @@ const linkTextClasses = [
       rel={(rest as LinkProps).target === "_blank" ? "noopener noreferrer" : (rest as LinkProps).rel}
       aria-disabled={disabled}
       tabindex={disabled ? -1 : undefined}
+      data-no-sketch-underline
       {...dataAttrs}
       {...rest}
     >
-      <span class:list={linkTextClasses} style={`color: ${strokeColor}`}>
+      <span class:list={[linkTextClasses, linkContentClasses]} style={`color: ${strokeColor}`}>
+        {hasIcon && iconPosition === "left" && <slot name="icon" />}
         <slot />
+        {hasIcon && iconPosition === "right" && <slot name="icon" />}
       </span>
       <svg
         class="sketch-svg block absolute left-0 w-full"

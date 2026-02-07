@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/node": "^9.5.2",
     "@libsql/client": "^0.15.15",
+    "@shikijs/rehype": "^3.22.0",
     "@studiocms/html": "^0.2.0",
     "@studiocms/md": "^0.2.0",
     "@studiocms/mdx": "^0.2.0",
@@ -27,7 +28,8 @@
     "pg": "^8.18.0",
     "roughjs": "^4.6.6",
     "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@6056264",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.13",

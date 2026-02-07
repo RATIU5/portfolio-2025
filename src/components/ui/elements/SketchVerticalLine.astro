@@ -1,0 +1,30 @@
+---
+import { generateSketchVerticalLine, type SketchVerticalLineOptions } from "@utils/sketchVerticalLine";
+
+interface Props extends SketchVerticalLineOptions {
+	seed?: number;
+	width?: number;
+	height?: number;
+	class?: string;
+}
+
+const {
+	seed = 12345,
+	width = 8,
+	height = 100,
+	stroke,
+	strokeWidth,
+	roughness,
+	bowing,
+	class: className,
+} = Astro.props;
+
+const svg = generateSketchVerticalLine(seed, width, height, {
+	stroke,
+	strokeWidth,
+	roughness,
+	bowing,
+});
+---
+
+<span class:list={["block", className]} set:html={svg} />

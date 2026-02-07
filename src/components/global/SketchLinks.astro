@@ -12,7 +12,7 @@ const underlineSvgs = Array.from({ length: VARIANT_COUNT }, (_, i) =>
 	let idx = 0;
 
 	const initSketchLinks = () => {
-		const links = document.querySelectorAll(".prose a:not(.anchor-link), a[data-sketch-prose]:not(.anchor-link)");
+		const links = document.querySelectorAll(".prose a:not(.anchor-link):not([data-no-sketch-underline]), a[data-sketch-prose]:not(.anchor-link):not([data-no-sketch-underline])");
 		links.forEach((link) => {
 			if (link.dataset.sketchProseInit) return;
 

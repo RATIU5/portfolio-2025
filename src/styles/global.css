@@ -45,7 +45,7 @@
 
 	--color-*: initial;
 
-	--color-white: #f4f4f4;
+	--color-white: #eae8e4;
 	--color-black: oklch(0.187 0.007 17.81);
 
 	--color-neutral-50: oklch(0.966 0.002 18.01);
@@ -274,12 +274,26 @@
 	@apply pl-space pr-space;
 }
 
+@utility bg-paper {
+	background-color: white;
+	background-image: url("/bedge-grunge.png");
+	background-repeat: repeat;
+}
+
 @utility prose-headings {
 	@apply prose-headings:font-normal prose-h1:text-5xl md:prose-h1:text-6xl xl:prose-h1:text-7xl prose-h2:text-3xl md:prose-h2:text-4xl xl:prose-h2:text-5xl prose-h3:text-xl md:prose-h3:text-2xl xl:prose-h3:text-3xl;
 }
 
 @utility prose-anchor {
 	@apply prose-a:no-underline prose-a:relative prose-a:inline-block prose-a:font-bold;
+}
+
+@utility prose-precode {
+	@apply prose-pre:text-lg prose-pre:leading-tight md:prose-pre:text-xl prose-pre:bg-white!;
+}
+
+@utility prose-lists {
+	@apply prose-li:text-xl md:prose-li:text-2xl xl:prose-li:text-3xl prose-li:marker:text-black;
 }
 
 /*
@@ -299,8 +313,7 @@
 	}
 
 	html {
-		@apply scroll-smooth bg-neutral-50 dark:bg-neutral-950;
-		background: image(url("/public/bedge-grunge.png")) repeat top left;
+		@apply scroll-smooth bg-paper;
 		scroll-padding-top: 120px;
 	}
 

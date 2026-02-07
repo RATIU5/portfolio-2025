@@ -6,16 +6,16 @@ export type Props = {
 };
 
 const { class: className } = Astro.props;
+
+const date = new Date();
+const copyrightYears =
+	date.getFullYear() === 2025 ? "2025" : `2025 - ${date.getFullYear()}`;
 ---
 
 <footer class={className} role="contentinfo">
-	<div class="relative">
-		<div class="absolute inset-0 -z-10 pointer-events-none"></div>
-
-		<div class="px-space py-16 md:py-20">
-			<div
-				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12"
-			></div>
-		</div>
+	<div class="px-space py-16 md:py-20">
+		<p class="text-lg w-full text-center">
+			© {copyrightYears} RATIU5. All rights reserved.
+		</p>
 	</div>
 </footer>

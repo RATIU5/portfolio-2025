@@ -1,0 +1,30 @@
+---
+import { generateSketchChevron, type SketchChevronOptions } from "@utils/sketchChevron";
+
+interface Props extends SketchChevronOptions {
+	seed?: number;
+	size?: number;
+	class?: string;
+}
+
+const {
+	seed = 12345,
+	size = 24,
+	stroke,
+	strokeWidth,
+	roughness,
+	bowing,
+	direction,
+	class: className,
+} = Astro.props;
+
+const svg = generateSketchChevron(seed, size, {
+	stroke,
+	strokeWidth,
+	roughness,
+	bowing,
+	direction,
+});
+---
+
+<span class:list={["inline-block", className]} set:html={svg} />

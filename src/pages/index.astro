@@ -1,11 +1,24 @@
 ---
+import { SDKCoreJs, runSDK } from "studiocms:sdk";
 import Page from "@layouts/Page.astro";
 import ProseMain from "@components/ui/sections/ProseMain.astro";
+import ArticleCard from "@components/ui/elements/ArticleCard.astro";
+
+const data = await runSDK(SDKCoreJs.GET.folderPages("article"));
+
+console.log(data);
 ---
 
 <Page>
 	<Fragment slot="head">
 		<meta property="og:type" content="article">
 	</Fragment>
-	<ProseMain>Hello</ProseMain>
+	<ProseMain class="pt-32">
+		<h1>articles</h1>
+		<div class="flex flex-col gap-20">
+			{data.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()).map((article) => (
+        <ArticleCard title={article.title} description={article.description} link={article.slug} />
+      ))}
+		</div>
+	</ProseMain>
 </Page>

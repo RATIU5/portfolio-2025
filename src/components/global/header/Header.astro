@@ -17,13 +17,16 @@ const currentPath = Astro.url.pathname;
 const navItems = [{ href: "/", label: "articles" }];
 
 const iconLinks = [
-	{ href: "/search", label: "Search", icon: SearchIcon },
+	// { href: "/search", label: "Search", icon: SearchIcon },
 	{ href: "https://github.com/RATIU5", label: "GitHub", icon: GithubIcon },
 ];
+
+const isExternal = (url: string) =>
+	url.startsWith("http://") || url.startsWith("https://");
 ---
 
 <ResponsiveHeader
-	class="sticky top-0 z-mobile-menu bg-neutral-50"
+	class="sticky top-0 z-mobile-menu bg-paper"
 	class:list={{
     [className!]: Boolean(className),
   }}
@@ -51,8 +54,8 @@ const iconLinks = [
 					{iconLinks.map((item) => (
 						<a
 							href={item.href}
-							target="_blank"
-							rel="noopener noreferrer"
+							target={isExternal(item.href) ? "_blank" : undefined}
+							rel={isExternal(item.href) ? "noopener noreferrer" : undefined}
 							aria-label={item.label}
 							class="hover:rotate-6 focus:rotate-6 hover:scale-110 focus:scale-110"
 						>
@@ -153,8 +156,8 @@ const iconLinks = [
 				{iconLinks.map((item) => (
 					<a
 						href={item.href}
-						target="_blank"
-						rel="noopener noreferrer"
+						target={isExternal(item.href) ? "_blank" : undefined}
+						rel={isExternal(item.href) ? "noopener noreferrer" : undefined}
 						aria-label={item.label}
 						class="text-neutral-900 hover:rotate-6 focus:rotate-6 hover:scale-110 focus:scale-110"
 					>
