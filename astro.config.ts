@@ -1,7 +1,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
-import node from '@astrojs/node';
 import studiocms from 'studiocms';
 import tailwindcss from '@tailwindcss/vite';
+import cloudflare from "@astrojs/cloudflare"
 
 const site =
     process.env.NODE_ENV === 'production'
@@ -13,9 +13,7 @@ export default defineConfig({
   site,
   output: "server",
 
-  adapter: node({
-    mode: 'standalone'
-  }),
+  adapter: cloudflare(),
 
   integrations: [studiocms()],
 

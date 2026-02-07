@@ -11,6 +11,7 @@
     "studiocms": "studiocms"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/node": "^9.5.2",
     "@libsql/client": "^0.15.15",
     "@shikijs/rehype": "^3.22.0",
