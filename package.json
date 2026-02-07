@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/node": "^9.5.2",
+    "@astrojs/vercel": "^9.0.4",
     "@libsql/client": "^0.15.15",
     "@studiocms/html": "^0.2.0",
     "@studiocms/md": "^0.2.0",

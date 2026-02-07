@@ -1,7 +1,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import studiocms from 'studiocms';
 import tailwindcss from '@tailwindcss/vite';
-import node from "@astrojs/node"
+import vercel from "@astrojs/vercel"
 
 const site =
     process.env.NODE_ENV === 'production'
@@ -13,9 +13,7 @@ export default defineConfig({
   site,
   output: "server",
 
-  adapter: node({
-    "mode": "standalone"
-  }),
+  adapter: vercel(),
 
   markdown: {
     syntaxHighlight: false,
