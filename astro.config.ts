@@ -28,11 +28,6 @@ export default defineConfig({
       },
       {
         provider: fontProviders.google(),
-        name: "Give You Glory",
-        cssVariable: "--gyg",
-      },
-      {
-        provider: fontProviders.google(),
         name: "Cutive Mono",
         cssVariable: "--cm",
       },
