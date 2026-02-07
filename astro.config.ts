@@ -1,11 +1,11 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import studiocms from 'studiocms';
 import tailwindcss from '@tailwindcss/vite';
-import vercel from "@astrojs/vercel"
+import node from "@astrojs/node"
 
 const site =
     process.env.NODE_ENV === 'production'
-        ? 'https://ratiu5.dev'
+        ? 'https://portfolio-2025-five-pearl.vercel.app'
         : 'http://localhost:4321';
 
 // https://astro.build/config
@@ -13,11 +13,9 @@ export default defineConfig({
   site,
   output: "server",
 
-  adapter: vercel(),
-
-  markdown: {
-    syntaxHighlight: false,
-  },
+  adapter: node({
+    "mode": "standalone"
+  }),
 
   integrations: [studiocms()],
 

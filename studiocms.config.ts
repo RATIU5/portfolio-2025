@@ -1,26 +1,20 @@
 import { defineStudioCMSConfig } from "studiocms/config"
+import html from '@studiocms/html';
 import md from '@studiocms/md';
 import mdx from '@studiocms/mdx';
 import s3Storage from '@studiocms/s3-storage';
+import rehypeShiki from '@shikijs/rehype';
 import rehypeSketchCodeBlock from './src/plugins/rehypeSketchCodeBlock';
-import { refractor } from 'refractor'
-import javascript from 'refractor/lang/javascript.js'
-import typescript from 'refractor/lang/typescript.js'
-import rehypePrismGenerator from 'rehype-prism-plus/generator'
-
-refractor.register(javascript)
-refractor.register(typescript)
-
-const rehypePrism = rehypePrismGenerator(refractor)
 
 export default defineStudioCMSConfig({
   dbStartPage: false,
   storageManager: s3Storage(),
   plugins: [
+    html(),
     md(),
     mdx({
       rehypePlugins: [
-        rehypePrism,
+        [rehypeShiki, { theme: 'gruvbox-light-soft' }],
         rehypeSketchCodeBlock,
       ],
     }),
