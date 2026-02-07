@@ -14,7 +14,9 @@
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/node": "^9.5.2",
     "@libsql/client": "^0.15.15",
+    "@shikijs/langs": "^3.22.0",
     "@shikijs/rehype": "^3.22.0",
+    "@shikijs/themes": "^3.22.0",
     "@studiocms/html": "^0.2.0",
     "@studiocms/md": "^0.2.0",
     "@studiocms/mdx": "^0.2.0",
@@ -28,6 +30,7 @@
     "mysql2": "^3.16.2",
     "pg": "^8.18.0",
     "roughjs": "^4.6.6",
+    "shiki": "^3.22.0",
     "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@6056264",
     "tailwindcss": "^4.1.18",
     "unist-util-visit": "^5.1.0"
