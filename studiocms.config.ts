@@ -14,7 +14,10 @@ export default defineStudioCMSConfig({
     md(),
     mdx({
       rehypePlugins: [
-        [rehypeShiki, { theme: 'gruvbox-light-soft' }],
+        [rehypeShiki, {
+          theme: 'gruvbox-light-soft',
+          langs: ['javascript', 'typescript', 'css'],
+        }],
         rehypeSketchCodeBlock,
       ],
     }),
