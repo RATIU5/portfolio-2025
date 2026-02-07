@@ -2,22 +2,16 @@ import { defineStudioCMSConfig } from "studiocms/config"
 import md from '@studiocms/md';
 import mdx from '@studiocms/mdx';
 import s3Storage from '@studiocms/s3-storage';
-import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
-import { createHighlighterCore } from 'shiki/core';
-import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 import rehypeSketchCodeBlock from './src/plugins/rehypeSketchCodeBlock';
+import { refractor } from 'refractor'
+import javascript from 'refractor/lang/javascript.js'
+import typescript from 'refractor/lang/typescript.js'
+import rehypePrismGenerator from 'rehype-prism-plus/generator'
 
-// Create highlighter once
-const highlighter = await createHighlighterCore({
-  themes: [import('@shikijs/themes/gruvbox-light-soft')],
-  langs: [
-    import('@shikijs/langs/javascript'),
-    import('@shikijs/langs/typescript'),
-    import('@shikijs/langs/css'),
-    // add others you need
-  ],
-  engine: createJavaScriptRegexEngine(),
-});
+refractor.register(javascript)
+refractor.register(typescript)
+
+const rehypePrism = rehypePrismGenerator(refractor)
 
 export default defineStudioCMSConfig({
   dbStartPage: false,
@@ -26,7 +20,7 @@ export default defineStudioCMSConfig({
     md(),
     mdx({
       rehypePlugins: [
-        [rehypeShikiFromHighlighter, highlighter, { theme: 'gruvbox-light-soft' }],
+        rehypePrism,
         rehypeSketchCodeBlock,
       ],
     }),
