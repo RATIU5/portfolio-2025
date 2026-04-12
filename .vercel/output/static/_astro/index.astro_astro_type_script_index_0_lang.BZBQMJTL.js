@@ -1,1 +1,0 @@
-import{a as o,$ as i,b as c,d,c as n,m}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";let s=n;const e="@studiocms/dashboard:content-index";o.subscribe(t=>{s=t||n});const a=i(e,c[e]);a.subscribe(t=>{d(t,s)});customElements.get("t-content-index")||customElements.define("t-content-index",m(e,a));

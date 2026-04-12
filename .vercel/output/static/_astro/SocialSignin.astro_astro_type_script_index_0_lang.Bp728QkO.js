@@ -1,1 +1,0 @@
-import{$ as t,b as e,m as a}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/dashboard:user-mngmt-edit",i=t(s,e[s]);customElements.get("t-users-edit-socials")||customElements.define("t-users-edit-socials",a(s,i));

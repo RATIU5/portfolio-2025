@@ -1,1 +1,0 @@
-import{D as n}from"./helpers.Be2pUrCd.js";if(document.getElementById("sui-sidebars")){const e=new n;e.showInnerOnClick("nav-open"),e.showInnerOnClick("nav-close"),e.showOuterOnClick("back-to-outer"),e.hideSidebarOnClick("show-page")}

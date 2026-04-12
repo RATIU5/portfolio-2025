@@ -1,1 +1,0 @@
-import{S as i}from"./helpers.Be2pUrCd.js";function n(){if(!document.getElementById("sui-sidebar"))return;const e=new i;e.showSidebarOnClick("nav-open"),e.hideSidebarOnClick("nav-close")}document.addEventListener("astro:page-load",n);n();

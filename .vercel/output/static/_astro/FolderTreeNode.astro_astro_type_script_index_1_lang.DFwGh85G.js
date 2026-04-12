@@ -1,1 +1,0 @@
-import{$ as r,b as t,m as n}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const e="@studiocms/dashboard:file-tree-renderer",s=r(e,t[e]);customElements.get("t-file-tree-renderer")||customElements.define("t-file-tree-renderer",n(e,s));

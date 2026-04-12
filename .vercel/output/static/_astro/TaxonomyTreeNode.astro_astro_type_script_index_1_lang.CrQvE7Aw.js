@@ -1,1 +1,0 @@
-import{$ as t,b as o,m as n}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const e="@studiocms/dashboard:taxonomy-tree-renderer",a=t(e,o[e]);customElements.get("t-taxonomy-tree-node")||customElements.define("t-taxonomy-tree-node",n(e,a));

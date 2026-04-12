@@ -1,1 +1,0 @@
-import{$ as n,b as i,a as l,d as u,c as a,m as c}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/auth:logout";let e=a;const o=n(s,i[s]);l.subscribe(t=>{e=t||a});o.subscribe(t=>{u(t,e)});customElements.get("t-logout")||customElements.define("t-logout",c(s,o));

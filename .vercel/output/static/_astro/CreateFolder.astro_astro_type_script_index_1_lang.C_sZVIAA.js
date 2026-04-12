@@ -1,1 +1,0 @@
-import{$ as t,b as n,u as r,f as o}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const a="@studiocms/dashboard:content-folder",s=t(a,n[a]);s.subscribe(e=>{r("folder-name",e["input-folder-name"]),o("parent-folder",e["input-folder-parent"])});

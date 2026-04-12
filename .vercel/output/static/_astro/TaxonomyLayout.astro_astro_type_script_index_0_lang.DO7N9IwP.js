@@ -1,1 +1,0 @@
-import{a as o,$ as m,b as i,d as c,c as s,m as r}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";let e=s;const t="@studiocms/dashboard:taxonomy-index";o.subscribe(a=>{e=a||s});const n=m(t,i[t]);n.subscribe(a=>{c(a,e)});customElements.get("t-taxonomy")||customElements.define("t-taxonomy",r(t,n));

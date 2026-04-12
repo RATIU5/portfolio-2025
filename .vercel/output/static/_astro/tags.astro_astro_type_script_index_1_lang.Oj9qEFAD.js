@@ -1,1 +1,0 @@
-import{$ as n,b as i,u as s}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const e="@studiocms/dashboard:taxonomy-index",l=n(e,i[e]);l.subscribe(a=>{s("name",a["label-name"]),s("slug",a["label-slug"]),s("description",a["label-description"])});
