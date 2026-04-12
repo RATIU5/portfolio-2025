@@ -1,0 +1,1 @@
+import{$ as e,b as n,m as a}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const t="@studiocms/dashboard:content-header",s=e(t,n[t]);customElements.get("t-content-header")||customElements.define("t-content-header",a(t,s));

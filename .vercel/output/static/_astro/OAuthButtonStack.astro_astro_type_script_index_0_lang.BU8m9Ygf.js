@@ -1,0 +1,1 @@
+import{$ as a,b as o,m as s}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const t="@studiocms/auth:oauth-stack",m=a(t,o[t]);customElements.get("t-comp-oauth")||customElements.define("t-comp-oauth",s(t,m));

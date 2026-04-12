@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "migrate": "studiocms migrate",
-    "studiocms": "studiocms"
+    "studiocms": "studiocms",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -38,6 +39,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "jsdom": "^28.0.0",
     "svg2roughjs": "^3.2.1",
+    "typescript": "^6.0.2",
     "vite": "^6.3.4"
   }
 }

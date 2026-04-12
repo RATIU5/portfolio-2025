@@ -1,0 +1,1 @@
+import{$ as s,b as e,m as t}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const a="@studiocms/dashboard:index",n=s(a,e[a]);customElements.get("t-dashboard-header")||customElements.define("t-dashboard-header",t(a,n));

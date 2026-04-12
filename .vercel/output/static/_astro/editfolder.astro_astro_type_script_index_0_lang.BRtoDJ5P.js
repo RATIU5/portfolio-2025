@@ -1,0 +1,1 @@
+import{a as e,$ as o,b as c,d as i,c as t}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";let n=t;const s="@studiocms/dashboard:content-index";e.subscribe(a=>{n=a||t});const r=o(s,c[s]);r.subscribe(a=>{i(a,n)});

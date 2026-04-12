@@ -1,0 +1,1 @@
+import{$ as t,b as a,m as e}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/dashboard:versionCheckModal",n=t(s,a[s]);customElements.get("t-vcm")||customElements.define("t-vcm",e(s,n));

@@ -23,6 +23,7 @@ const { class: className } = Astro.props;
 		<Font cssVariable="--ftg" preload />
 		<Font cssVariable="--cm" preload />
 		<Font cssVariable="--typrighter" preload />
+		<link rel="alternate" type="application/rss+xml" title="RATIU5 RSS Feed" href="/rss.xml" />
 		<slot name="head" />
 	</head>
 	<body class:list={{ "min-h-screen": true, [className!]: Boolean(className) }}>

@@ -1,0 +1,1 @@
+import{$ as n,b as t,m as s}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const o="@studiocms/dashboard:configuration",a=n(o,t[o]);customElements.get("t-config-form")||customElements.define("t-config-form",s(o,a));

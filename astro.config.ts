@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel"
 
 const site =
     process.env.NODE_ENV === 'production'
-        ? 'https://portfolio-2025-five-pearl.vercel.app'
+        ? 'https://ratiu5.dev'
         : 'http://localhost:4321';
 
 // https://astro.build/config

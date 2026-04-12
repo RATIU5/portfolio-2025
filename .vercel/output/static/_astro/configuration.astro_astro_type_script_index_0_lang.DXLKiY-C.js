@@ -1,0 +1,1 @@
+import{$ as i,b as o,a as r,d as c,c as s,p as d,m}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const e="@studiocms/dashboard:configuration";let t=s;const n=i(e,o[e]);r.subscribe(a=>{t=a||s});n.subscribe(a=>{c(a,t),d(a.header)});customElements.get("t-config")||customElements.define("t-config",m(e,n));

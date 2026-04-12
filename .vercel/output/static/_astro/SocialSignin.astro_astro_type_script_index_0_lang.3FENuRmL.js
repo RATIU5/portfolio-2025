@@ -1,0 +1,1 @@
+import{$ as o,b as t,m as a}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/dashboard:profile",e=o(s,t[s]);customElements.get("t-profile-socials")||customElements.define("t-profile-socials",a(s,e));

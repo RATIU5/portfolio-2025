@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^12.6.12
-        version: 12.6.12(@types/node@25.2.1)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
+        version: 12.6.12(@types/node@25.2.1)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
       '@astrojs/node':
         specifier: ^9.5.2
-        version: 9.5.2(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+        version: 9.5.2(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       '@astrojs/vercel':
         specifier: ^9.0.4
-        version: 9.0.4(@aws-sdk/credential-provider-web-identity@3.972.4)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.4)(rollup@4.57.1)
+        version: 9.0.4(@aws-sdk/credential-provider-web-identity@3.972.4)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(react@19.2.4)(rollup@4.57.1)
       '@libsql/client':
         specifier: ^0.15.15
         version: 0.15.15
@@ -25,16 +25,16 @@ importers:
         version: 3.22.0
       '@studiocms/html':
         specifier: ^0.2.0
-        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)
+        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)
       '@studiocms/md':
         specifier: ^0.2.0
-        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)
+        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)
       '@studiocms/mdx':
         specifier: ^0.2.0
-        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)
+        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)
       '@studiocms/s3-storage':
         specifier: ^0.2.0
-        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)
+        version: 0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.1.18(vite@6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))
@@ -43,7 +43,7 @@ importers:
         version: 0.8.11
       astro:
         specifier: ^5.17.1
-        version: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+        version: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -64,7 +64,7 @@ importers:
         version: 4.6.6
       studiocms:
         specifier: https://pkg.pr.new/withstudiocms/studiocms@6056264
-        version: https://pkg.pr.new/withstudiocms/studiocms@6056264(ioxrvcce7fgbazaiswkk3ba7fi)
+        version: https://pkg.pr.new/withstudiocms/studiocms@6056264(ntjzdiomchptr6v5at7x2wwj2e)
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
@@ -84,6 +84,9 @@ importers:
       svg2roughjs:
         specifier: ^3.2.1
         version: 3.2.1
+      typescript:
+        specifier: ^6.0.2
+        version: 6.0.2
       vite:
         specifier: ^6.3.4
         version: 6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
@@ -3838,8 +3841,8 @@ packages:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.2:
+    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4217,12 +4220,12 @@ snapshots:
 
   '@asamuzakjp/nwsapi@2.3.9': {}
 
-  '@astrojs/cloudflare@12.6.12(@types/node@25.2.1)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)':
+  '@astrojs/cloudflare@12.6.12(@types/node@25.2.1)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@astrojs/underscore-redirects': 1.0.0
       '@cloudflare/workers-types': 4.20260207.0
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       tinyglobby: 0.2.15
       vite: 6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
       wrangler: 4.50.0(@cloudflare/workers-types@4.20260207.0)
@@ -4273,10 +4276,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.5.2(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))':
+  '@astrojs/node@9.5.2(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -4300,14 +4303,14 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.0': {}
 
-  '@astrojs/vercel@9.0.4(@aws-sdk/credential-provider-web-identity@3.972.4)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(react@19.2.4)(rollup@4.57.1)':
+  '@astrojs/vercel@9.0.4(@aws-sdk/credential-provider-web-identity@3.972.4)(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(react@19.2.4)(rollup@4.57.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@vercel/analytics': 1.6.1(react@19.2.4)
       '@vercel/functions': 2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4)
       '@vercel/nft': 0.30.4(rollup@4.57.1)
       '@vercel/routing-utils': 5.3.2
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       esbuild: 0.25.12
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -5396,21 +5399,21 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inox-tools/modular-station@0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))':
+  '@inox-tools/modular-station@0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))':
     dependencies:
       '@inox-tools/utils': 0.8.1
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/runtime-logger@0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))':
+  '@inox-tools/runtime-logger@0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))':
     dependencies:
-      '@inox-tools/modular-station': 0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      '@inox-tools/modular-station': 0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       '@inox-tools/utils': 0.8.1
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
     transitivePeerDependencies:
       - supports-color
 
@@ -6155,9 +6158,9 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@studiocms/html@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)':
+  '@studiocms/html@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)':
     dependencies:
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       codemirror: 5.65.19
       effect: 3.19.16
       katex: 0.16.28
@@ -6197,19 +6200,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/md@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)':
+  '@studiocms/md@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)':
     dependencies:
       '@studiocms/markdown-remark-processor': 1.2.0
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       effect: 3.19.16
     transitivePeerDependencies:
       - astro
       - supports-color
 
-  '@studiocms/mdx@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)':
+  '@studiocms/mdx@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)':
     dependencies:
       '@mdx-js/mdx': 3.1.1
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       effect: 3.19.16
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
@@ -6220,23 +6223,23 @@ snapshots:
       - astro
       - supports-color
 
-  '@studiocms/s3-storage@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(effect@3.19.16)':
+  '@studiocms/s3-storage@0.2.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(effect@3.19.16)':
     dependencies:
       '@aws-sdk/client-s3': 3.984.0
       '@aws-sdk/s3-request-presigner': 3.984.0
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       effect: 3.19.16
     transitivePeerDependencies:
       - astro
       - aws-crt
 
-  '@studiocms/ui@1.1.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(vite@6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))':
+  '@studiocms/ui@1.1.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(vite@6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))':
     dependencies:
       '@iconify-json/heroicons': 1.2.3
       '@iconify/types': 2.0.0
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
-      astro-transition-event-polyfill: 1.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
+      astro-transition-event-polyfill: 1.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       vite: 6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
 
   '@tailwindcss/node@4.1.18':
@@ -6406,13 +6409,13 @@ snapshots:
     optionalDependencies:
       ajv: 6.12.6
 
-  '@withstudiocms/auth-kit@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)':
+  '@withstudiocms/auth-kit@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)':
     dependencies:
       '@oslojs/binary': 1.0.0
       '@oslojs/crypto': 1.0.1
       '@oslojs/encoding': 1.1.0
-      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
     transitivePeerDependencies:
       - '@effect/cli'
       - '@effect/platform'
@@ -6430,11 +6433,11 @@ snapshots:
       tinyexec: 1.0.2
       wrap-ansi: 9.0.2
 
-  '@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)':
+  '@withstudiocms/component-registry@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)':
     dependencies:
-      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       ts-morph: 27.0.2
       ultrahtml: 1.6.0
     transitivePeerDependencies:
@@ -6443,30 +6446,30 @@ snapshots:
       - '@effect/platform-node'
       - effect
 
-  '@withstudiocms/config-utils@0.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))':
+  '@withstudiocms/config-utils@0.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))':
     dependencies:
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       deepmerge-ts: 7.1.5
       esbuild: 0.25.12
 
-  '@withstudiocms/effect@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)':
+  '@withstudiocms/effect@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)':
     dependencies:
       '@clack/prompts': 1.0.0
       '@effect/cli': 0.73.2(@effect/platform@0.94.3(effect@3.19.16))(@effect/printer-ansi@0.47.0(@effect/typeclass@0.38.0(effect@3.19.16))(effect@3.19.16))(@effect/printer@0.47.0(@effect/typeclass@0.38.0(effect@3.19.16))(effect@3.19.16))(effect@3.19.16)
       '@effect/platform': 0.94.3(effect@3.19.16)
       '@effect/platform-node': 0.104.1(@effect/cluster@0.56.2(@effect/platform@0.94.3(effect@3.19.16))(@effect/rpc@0.73.0(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(@effect/workflow@0.16.0(@effect/experimental@0.58.0(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(@effect/platform@0.94.3(effect@3.19.16))(@effect/rpc@0.73.0(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(effect@3.19.16))(effect@3.19.16))(@effect/platform@0.94.3(effect@3.19.16))(@effect/rpc@0.73.0(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(@effect/platform@0.94.3(effect@3.19.16))(effect@3.19.16))(effect@3.19.16)
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       deepmerge-ts: 7.1.5
       effect: 3.19.16
       micromatch: 4.0.8
       nodemailer: 7.0.13
       socks: 2.8.7
 
-  '@withstudiocms/internal_helpers@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@6056264527ed6299d64e39cbdf354dbbaaf88915(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))':
+  '@withstudiocms/internal_helpers@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@6056264527ed6299d64e39cbdf354dbbaaf88915(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))':
     dependencies:
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       mdast-util-from-markdown: 2.0.2
       mdast-util-to-string: 4.0.0
       tinyexec: 1.0.2
@@ -6555,18 +6558,18 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-integration-kit@0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-integration-kit@0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)):
     dependencies:
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       pathe: 1.1.2
 
-  astro-transition-event-polyfill@1.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-transition-event-polyfill@1.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)):
     dependencies:
       '@types/node': 20.19.32
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
       pathe: 2.0.3
 
-  astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2):
+  astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/internal-helpers': 0.7.5
@@ -6617,7 +6620,7 @@ snapshots:
       svgo: 4.0.0
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
-      tsconfck: 3.1.6(typescript@5.9.3)
+      tsconfck: 3.1.6(typescript@6.0.2)
       ultrahtml: 1.6.0
       unifont: 0.7.3
       unist-util-visit: 5.1.0
@@ -6630,7 +6633,7 @@ snapshots:
       yocto-spinner: 0.2.3
       zod: 3.25.76
       zod-to-json-schema: 3.25.1(zod@3.25.76)
-      zod-to-ts: 1.2.0(typescript@5.9.3)(zod@3.25.76)
+      zod-to-ts: 1.2.0(typescript@6.0.2)(zod@3.25.76)
     optionalDependencies:
       sharp: 0.34.5
     transitivePeerDependencies:
@@ -8686,28 +8689,28 @@ snapshots:
 
   strnum@2.1.2: {}
 
-  studiocms@https://pkg.pr.new/withstudiocms/studiocms@6056264(ioxrvcce7fgbazaiswkk3ba7fi):
+  studiocms@https://pkg.pr.new/withstudiocms/studiocms@6056264(ntjzdiomchptr6v5at7x2wwj2e):
     dependencies:
       '@iconify-json/circle-flags': 1.2.10
       '@iconify-json/flat-color-icons': 1.2.3
       '@iconify-json/simple-icons': 1.2.69
-      '@inox-tools/runtime-logger': 0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      '@inox-tools/runtime-logger': 0.7.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       '@nanostores/i18n': 1.2.2(nanostores@1.1.0)
       '@nanostores/persistent': 1.3.3(nanostores@1.1.0)
       '@outerbase/sdk-transform': 1.0.8
-      '@studiocms/ui': 1.1.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))(vite@6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))
-      '@withstudiocms/auth-kit': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)
+      '@studiocms/ui': 1.1.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))(vite@6.4.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))
+      '@withstudiocms/auth-kit': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/auth-kit@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)
       '@withstudiocms/cli-kit': 0.2.0
-      '@withstudiocms/component-registry': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)
-      '@withstudiocms/config-utils': 0.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
-      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(yrzn3zgmtbja3qgjuogh66rc2u)
-      '@withstudiocms/internal_helpers': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@6056264527ed6299d64e39cbdf354dbbaaf88915(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      '@withstudiocms/component-registry': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/component-registry@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)
+      '@withstudiocms/config-utils': 0.1.0(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
+      '@withstudiocms/effect': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/effect@6056264527ed6299d64e39cbdf354dbbaaf88915(rba3xgiyrka54lkxofn6necgte)
+      '@withstudiocms/internal_helpers': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/internal_helpers@6056264527ed6299d64e39cbdf354dbbaaf88915(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       '@withstudiocms/kysely': 0.2.0(@libsql/client@0.15.15)(effect@3.19.16)(kysely-turso@0.1.1(@libsql/client@0.15.15)(kysely@0.28.11))(mysql2@3.16.3)(pg@8.18.0)
       '@withstudiocms/sdk': 0.2.0
       '@withstudiocms/template-lang': 0.1.0
       ace-builds: 1.43.6
-      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
-      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
+      astro: 5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2)
+      astro-integration-kit: 0.19.1(astro@5.17.1(@types/node@25.2.1)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.972.4))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@6.0.2)(yaml@2.8.2))
       boxen: 8.0.1
       diff: 8.0.3
       dompurify: 3.3.1
@@ -8830,15 +8833,15 @@ snapshots:
       '@ts-morph/common': 0.28.1
       code-block-writer: 13.0.3
 
-  tsconfck@3.1.6(typescript@5.9.3):
+  tsconfck@3.1.6(typescript@6.0.2):
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   tslib@2.8.1: {}
 
   type-fest@4.41.0: {}
 
-  typescript@5.9.3: {}
+  typescript@6.0.2: {}
 
   ufo@1.6.3: {}
 
@@ -9101,9 +9104,9 @@ snapshots:
     dependencies:
       zod: 3.25.76
 
-  zod-to-ts@1.2.0(typescript@5.9.3)(zod@3.25.76):
+  zod-to-ts@1.2.0(typescript@6.0.2)(zod@3.25.76):
     dependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
       zod: 3.25.76
 
   zod@3.22.3: {}

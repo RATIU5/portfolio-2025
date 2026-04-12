@@ -1,0 +1,1 @@
+import{$ as r,b as i,a as d,d as m,c as a,p as o,m as u}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/dashboard:user-mngmt-index";let t=a;const n=r(s,i[s]);d.subscribe(e=>{t=e||a});n.subscribe(e=>{m(e,t),o(e.header)});customElements.get("t-users-index")||customElements.define("t-users-index",u(s,n));

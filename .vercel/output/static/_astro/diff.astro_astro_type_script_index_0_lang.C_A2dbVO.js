@@ -1,0 +1,1 @@
+import{a as c,$ as e,b as a,d,c as o,m as f}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";let i=o;const n="@studiocms/dashboard:content-index",s="@studiocms/dashboard:content-diff";c.subscribe(t=>{i=t||o});const r=e(n,a[n]),m=e(s,a[s]);r.subscribe(t=>{d(t,i)});customElements.get("t-content-diff")||customElements.define("t-content-diff",f(n,m));

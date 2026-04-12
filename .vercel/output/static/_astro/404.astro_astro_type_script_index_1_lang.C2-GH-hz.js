@@ -1,0 +1,1 @@
+import{$ as o,b as r,a as i,d as c,m,c as t}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const a="@studiocms/dashboard:404";let e=t;const n=o(a,r[a]);i.subscribe(s=>{e=s||t});n.subscribe(s=>{c(s,e)});customElements.get("t-four")||customElements.define("t-four",m(a,n));

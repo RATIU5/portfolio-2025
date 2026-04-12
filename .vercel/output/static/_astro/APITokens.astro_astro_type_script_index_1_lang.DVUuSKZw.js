@@ -1,0 +1,1 @@
+import{$ as o,b as i,u as a,m as n}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/dashboard:profile",e=o(s,i[s]);e.subscribe(t=>{a("description",t["api-tokens-modal-description"])});customElements.get("t-profile-tokens")||customElements.define("t-profile-tokens",n(s,e));

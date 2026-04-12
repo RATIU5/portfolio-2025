@@ -9,6 +9,7 @@ import rehypeSketchCodeBlock from './src/plugins/rehypeSketchCodeBlock';
 export default defineStudioCMSConfig({
   dbStartPage: false,
   storageManager: s3Storage(),
+  logLevel: "Debug",
   plugins: [
     html(),
     md(),

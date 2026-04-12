@@ -1,0 +1,25 @@
+---
+import Page from "@layouts/Page.astro";
+import ProseMain from "@components/ui/sections/ProseMain.astro";
+import SEO from "@components/global/SEO.astro";
+import Button from "@components/ui/elements/Button.astro";
+import SketchChevron from "@components/ui/elements/SketchChevron.astro";
+---
+
+<Page>
+	<Fragment slot="head">
+		<SEO
+			title="Not Found"
+			description="The page you're looking for doesn't exist."
+			type="website"
+		/>
+	</Fragment>
+	<ProseMain class="pt-32">
+		<h1>404</h1>
+		<p>Page not found. The page you're looking for doesn't exist or has been moved.</p>
+		<Button type="link" href="/" size="medium" iconPosition="right">
+			go home
+			<SketchChevron slot="icon" size={18} direction="right" />
+		</Button>
+	</ProseMain>
+</Page>

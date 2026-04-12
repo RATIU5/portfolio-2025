@@ -1,0 +1,268 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/404/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/404/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/configuration/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/content-management/create/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/content-management/create-folder/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/content-management/diff/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/content-management/edit/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/content-management/edit-folder/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/content-management/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/login/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/logout/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/password-reset/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/plugins/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/profile/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/signup/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/smtp-configuration/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/system-management/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/taxonomy/categories/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/taxonomy/tags/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/taxonomy/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/unverified-email/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/user-management/edit/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/user-management/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dashboard/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/robots\\.txt/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/rss\\.xml/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/sitemap\\.xml/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/auth/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/api-tokens/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/config/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/content/diff/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/content/folder/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/content/page/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/create-reset-link/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/create-user/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/create-user-invite/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/email-notification-settings-site/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/mailer/config/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/mailer/test-email/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/plugins/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/profile/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/resend-verify-email/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/reset-password/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/search-list/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/taxonomy/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/taxonomy-search/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/templates/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/update-user-notifications/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/users/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/verify-email/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/dashboard/verify-session/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/integrations/([^/]+?)(?:/(.*?))?/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/partials/editor/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/partials/render/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/partials/user-list-items/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/rest/v1/public/([^/]+?)(?:/(.*?))?/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/rest/v1/([^/]+?)(?:/(.*?))?/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/studiocms_api/sdk(?:/(.*?))?/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^(?:/(.*?))?/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/.*$",
+			"dest": "_render",
+			"status": 404
+		}
+	]
+}

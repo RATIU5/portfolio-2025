@@ -1,0 +1,1 @@
+import{$ as n,b as r,a as o,d as m,c as a,m as c}from"./client.BCzGrtn1.js";import"./preload-helper.BlTxHScW.js";const s="@studiocms/dashboard:unverifiedEmail";let t=a;const i=n(s,r[s]);o.subscribe(e=>{t=e||a});i.subscribe(e=>{m(e,t)});customElements.get("t-unverified")||customElements.define("t-unverified",c(s,i));
